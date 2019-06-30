@@ -3,6 +3,7 @@ const fs = require('fs');
 function readRenderData(){
     var data = {};
     data.site = tryReadData("site");
+    data.site.menu = tryReadData("menu");
     return data;
 }
 function tryReadData(id){
