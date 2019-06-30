@@ -10,7 +10,7 @@ module.exports = {
         path : info.outputDir,
         filename:"js/[name].js"
     },
-    mode:'development',
+    mode:'production',
     devServer:{
         contentBase:info.outputDir,
         historyApiFallback:true,
@@ -37,7 +37,7 @@ module.exports = {
                         loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
                 }
             },
-            {test: /\.jade$/,
+            {test: /\.pug$/,
                 use:[
                     {loader:'html-loader'},
                     {loader:'pug-html-loader',options:{data:dataManager.readRenderData()}},

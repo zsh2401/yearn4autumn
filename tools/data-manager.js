@@ -1,5 +1,8 @@
 const DATA_DIR = __dirname +  "/data";
 const fs = require('fs');
+function getPugs(){
+    return tryReadData("pugs");
+}
 function readRenderData(){
     var data = {};
     data.site = tryReadData("site");
@@ -12,5 +15,7 @@ function tryReadData(id){
 }
 module.exports = 
 {
-    readRenderData : readRenderData
+    readRenderData : readRenderData,
+    getPugs:getPugs
+
 }

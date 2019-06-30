@@ -6,7 +6,7 @@ nav(role="navigation").navbar.navbar-default.navbar-fixed-top.noradius
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a(href="/").navbar-brand.visible-xs-block 秋之盒
+                    a(href="/").navbar-brand.visible-xs-block 慕秋
                 
                 #navbar-c.collapse.navbar-collapse
                     ul.nav.navbar-nav
@@ -17,4 +17,4 @@ nav(role="navigation").navbar.navbar-default.navbar-fixed-top.noradius
                                 ul.dropdown-menu
                                     for child in menuItem.childs
                                         li
-                                            a(href="#{child.href}") #{child.title}
+                                            a(href=child.href) #{child.title}
