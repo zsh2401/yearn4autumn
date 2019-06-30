@@ -1,7 +1,8 @@
 npm install style-loader
-npm i webpack -g
-npm link webpack --save-dev
+npm install -g webpack
+npm install webpack
 npm install -g webpack-cli
+npm install webpack-cli
 npm install css-loader
 npm install ts-loader
 npm install jade

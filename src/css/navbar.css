@@ -1,5 +1,8 @@
 /* navbar */
 /* #ff7f50; */
+.navbar{
+    /* padding-left: 120px; */
+}
 .navbar-default {
     /* background-color: white; */
     border-color: gray;
@@ -19,7 +22,7 @@
   }
   
   .navbar .navbar-collapse {
-    text-align: center;
+    /* text-align: center; */
   }
 /* Link */
 .navbar-default .navbar-nav > li > a {

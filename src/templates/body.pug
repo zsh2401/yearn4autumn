@@ -21,10 +21,10 @@ html
         block precontent
 
         .container
+            br
             block sitenotice
                 if(site.notice.enable)
                     div(class="alert alert-"+ site.notice.level +" text-center") #{site.notice.text}
             block content
-
         block footer
             include ./comps/footer

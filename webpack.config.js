@@ -8,7 +8,8 @@ module.exports = {
     },
     output: {
         path : info.outputDir,
-        filename:"js/[name].js"
+        filename:"js/[name].js",
+        publicPath: '/'
     },
     mode:'production',
     devServer:{
