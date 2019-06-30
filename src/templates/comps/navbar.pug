@@ -10,11 +10,13 @@ nav(role="navigation").navbar.navbar-default.navbar-fixed-top.noradius
                 
                 #navbar-c.collapse.navbar-collapse
                     ul.nav.navbar-nav
-                        for menuItem in site.menu
-                            li.dropdown
-                                a(href="#" data-toggle="dropdown").dropdown-toggle #{menuItem.title}
-                                    b.caret
-                                ul.dropdown-menu
-                                    for child in menuItem.childs
-                                        li
-                                            a(href=child.href) #{child.title}
+                        li
+                            a(href="#") 主页
+                        li
+                            a(href="/discover/") 发现
+                        li
+                            a(href="/donate/") 捐赠
+                        li
+                            a(href="/about/") 关于
+
+ 
