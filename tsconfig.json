@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es6",
+      "allowJs": true
+    },
+    "include": [
+      "./src/scripts/*", "./src/pscripts/*","src/pscripts/index.ts"
+    ],
+    "exclude": [
+      "./node_modules/"
+    ]
+}
