@@ -1,5 +1,6 @@
-const data = require('./tools/webpack-data');
+const data = require('./tools/dist/info-provider');
 const info = require('./info');
+data.init();
 module.exports = {
     entry:data.getEntries(),
     output: {

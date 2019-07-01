@@ -1,8 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const info = require('../info');
-const data = require("./data-manager");
+import * as info from './infox'
+import * as data from './data-manager'
 const jades = data.getPugs();
-function get(){
+export function get(){
     var data = [];
     for(let i = 0;i<jades.length;i++){
         data[data.length] = new HtmlWebpackPlugin({
@@ -19,10 +19,7 @@ function get(){
     }
     return data;
 }
-function getData(){
+export function getData(){
+    data.readRenderData
     return {title:"You win!"}
 }
-module.exports = {
-    plugins:get(),
-    data:getData(),
-};
