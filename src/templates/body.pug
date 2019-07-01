@@ -1,4 +1,4 @@
-html
+html(style="height:100%")
     head
         block title
             title #{site.title}
@@ -19,8 +19,7 @@ html
     body
         include ./comps/navbar
         block precontent
-
-        .container
+        #main-container.container
             br
             block sitenotice
                 if(site.notice.enable)

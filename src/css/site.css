@@ -1,8 +1,10 @@
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     display:none;
-}
+} */
 *{
     font-family: Microsoft YaHei UI Light,Microsoft YaHei, sans-serif;
+    margin:0px;
+    padding: 0px;
 }
 body{
     padding-top: 50px;
@@ -10,13 +12,19 @@ body{
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
+    height:100px;
     /* background-image: url(../images/bg2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed; */
 }
-.container{
-    color: black;
-    background-color: white;
-    min-height: 100vh;
+footer{
+    padding:1px;
+    margin:0px;
+}
+#main-footer{
+    padding-left:30px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
 }

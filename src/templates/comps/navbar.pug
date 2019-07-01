@@ -1,5 +1,5 @@
 nav(role="navigation").navbar.navbar-default.navbar-fixed-top.noradius
-            .container-fluid
+    .container
                 .navbar-header
                     button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-c")
                         span.sr-only 切换导航
@@ -9,14 +9,12 @@ nav(role="navigation").navbar.navbar-default.navbar-fixed-top.noradius
                     a(href="/").navbar-brand 慕秋
                 
                 #navbar-c.collapse.navbar-collapse
-                    ul.nav.navbar-nav
+                    ul.nav.navbar-nav.navbar-left
                         li
-                            a(href="#") 主页
+                            a(href="/fun/") 库
                         li
                             a(href="/discover/") 发现
                         li
                             a(href="/donate/") 捐赠
                         li
-                            a(href="/about/") 关于
-
- 
+                            a(href="/about/") 关于 

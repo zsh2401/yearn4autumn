@@ -1,11 +1,7 @@
-const jadeManager = require('./tools/jade-manager');
-const dataManager = require('./tools/data-manager');
+const data = require('./tools/webpack-data');
 const info = require('./info');
 module.exports = {
-    entry:{
-        site: info.scriptsDir + "/site.ts",
-        p_index:info.entriesDir + "/index.ts",
-    },
+    entry:data.getEntries(),
     output: {
         path : info.outputDir,
         filename:"js/[name].js",
@@ -21,7 +17,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js',".css",".png",".jpg" ]
     },
-    plugins:jadeManager.plugins,
+    plugins:data.getPlugins(),
     module: {
         rules: [
             { test: /\.css$/, use: [
@@ -41,7 +37,7 @@ module.exports = {
             {test: /\.pug$/,
                 use:[
                     {loader:'html-loader'},
-                    {loader:'pug-html-loader',options:{data:dataManager.readRenderData()}},
+                    {loader:'pug-html-loader',options:{data:data.getPugData()}},
                 ]
             }
         ]
