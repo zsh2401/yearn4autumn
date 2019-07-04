@@ -46,6 +46,10 @@ function getPugData() {
 }
 exports.getPugData = getPugData;
 function handleFun(fun) {
+    for (var i = 0; i < fun.pages.length; i++) {
+        var crtPage = fun.pages[i];
+        crtPage.entries;
+    }
 }
 if (require.main === module) {
     console.log(getPlugins());

@@ -1,8 +1,8 @@
-const data = require('./tools/dist/info-provider');
 const info = require('./info');
-data.init();
+const pluginsManager = require('./tools/dist/plugins-manager');
+const enritesManager = require('./tools/dist/entries-manager');
 module.exports = {
-    entry:data.getEntries(),
+    entry:enritesManager.getEntries(),
     output: {
         path : info.outputDir,
         filename:"js/[name].js",
@@ -16,9 +16,9 @@ module.exports = {
         port:9999
     },
     resolve: {
-        extensions: ['.ts', '.js',".css",".png",".jpg" ]
+        extensions: ['.ts', '.js',".css",".png",".jpg",".ejs" ]
     },
-    plugins:data.getPlugins(),
+    plugins:pluginsManager.getPlugins(),
     module: {
         rules: [
             { test: /\.css$/, use: [
@@ -38,7 +38,13 @@ module.exports = {
             {test: /\.pug$/,
                 use:[
                     {loader:'html-loader'},
-                    {loader:'pug-html-loader',options:{data:data.getPugData()}},
+                    {loader:'pug-html-loader'},
+                ]
+            },
+            {test: /\.ejs$/,
+                use:[
+                    {loader:'html-loader'},
+                    {loader:'ejs-loader'},
                 ]
             }
         ]
