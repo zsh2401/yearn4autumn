@@ -13,14 +13,17 @@ var info = __importStar(require("./infox"));
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var FILENAME_ENTRY = "index.js";
 var FILENAME_RENDER = "render.js";
+var FILENAME_OUTPAGENAME = "index.html";
 var Page = /** @class */ (function () {
     function Page(dirName) {
+        this.pageName = dirName;
         this.dirName = dirName;
         this.entryName = this.dirName + "_index";
         this.dirPath = path.resolve(info.pagesDir, this.dirName);
         this.entryFile = path.resolve(this.dirPath, FILENAME_ENTRY);
         this.renderFile = path.resolve(this.dirPath, FILENAME_RENDER);
-        this.render = require(this.renderFile);
+        this.mainEntry = this.getEntry();
+        this.mainPlugin = this.getPlugin();
     }
     Page.prototype.getEntry = function () {
         return {
@@ -30,7 +33,7 @@ var Page = /** @class */ (function () {
     };
     Page.prototype.getPlugin = function () {
         var result = new HtmlWebpackPlugin({
-            filename: this.dirPath + "/index.html",
+            filename: path.resolve(info.outputDir, this.dirName, FILENAME_OUTPAGENAME),
             template: this.renderFile,
             chunks: ['common', this.entryName],
             hash: true,
@@ -65,7 +68,7 @@ function check(dir) {
     return fs.existsSync(renderFile) && fs.existsSync(entryFile);
 }
 if (require.main === module) {
-    console.log(getPages()[0].getPlugin());
+    console.log(getPages()[0].mainPlugin);
 }
 else {
     // console.log('required as a module');

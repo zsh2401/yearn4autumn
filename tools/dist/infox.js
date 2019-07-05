@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var path = __importStar(require("path"));
 exports.rootDir = path.resolve(__dirname, "..", "..");
-exports.outputDir = path.resolve(exports.rootDir + "dist");
+exports.outputDir = path.resolve(exports.rootDir, "dist");
 exports.srcDir = path.resolve(exports.rootDir, "src");
 exports.scriptsDir = path.resolve(exports.srcDir, "scripts");
 exports.pagesDir = path.resolve(exports.srcDir, "pages");

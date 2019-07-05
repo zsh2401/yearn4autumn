@@ -2,7 +2,7 @@ import * as pm from './pages-scanner';
 export function getPlugins():Array<any>{
     let result = new Array<any>();
     pm.getPages().forEach((e,index)=>{
-        result[index] = e.getPlugin();
+        result[index] = e.mainPlugin;
     });;
     return result;
 }

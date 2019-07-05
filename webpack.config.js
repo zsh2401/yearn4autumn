@@ -41,12 +41,7 @@ module.exports = {
                     {loader:'pug-html-loader'},
                 ]
             },
-            {test: /\.ejs$/,
-                use:[
-                    {loader:'html-loader'},
-                    {loader:'ejs-loader'},
-                ]
-            }
+            { test: /\.ejs$/, loader: 'ejs-loader' }
         ]
       }
 }

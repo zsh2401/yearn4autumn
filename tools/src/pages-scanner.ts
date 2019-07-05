@@ -4,37 +4,42 @@ import * as info from './infox';
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FILENAME_ENTRY = "index.js";
 const FILENAME_RENDER = "render.js";
+const FILENAME_OUTPAGENAME = "index.html";
 export interface Entry{
     name:string;
     file:string;
 }
 export class Page{
-    private render:any;
     private renderFile:string;
     private entryFile:string;
     private entryName:string;
     public dirPath:string;
-    constructor(
-        public dirName:string
-    )
+    public pageName:string;
+    public dirName:string;
+    public mainEntry:Entry;
+    public mainPlugin:any;
+    constructor(dirName:string)
     {
+        this.pageName = dirName;
+        this.dirName = dirName;
         this.entryName = this.dirName + "_index";
         this.dirPath = path.resolve(info.pagesDir,this.dirName);
         this.entryFile = path.resolve(this.dirPath,FILENAME_ENTRY);
         this.renderFile = path.resolve(this.dirPath,FILENAME_RENDER);
-        this.render = require(this.renderFile);
+        this.mainEntry = this.getEntry();
+        this.mainPlugin = this.getPlugin();
     }
-    getEntry():any
+    private getEntry():Entry
     {
         return {
             name:this.entryName,
             file:this.entryFile
         };
     }
-    getPlugin()
+    private getPlugin()
     {
         let result = new HtmlWebpackPlugin({
-            filename: `${this.dirPath}/index.html`,
+            filename: path.resolve(info.outputDir,this.dirName,FILENAME_OUTPAGENAME),
             template: this.renderFile,
             chunks: [ 'common', this.entryName],
             hash: true, // 为静态资源生成hash值
@@ -68,7 +73,7 @@ function check(dir:string):boolean{
 }
 if (require.main === module)
 {
-    console.log(getPages()[0].getPlugin());
+    console.log(getPages()[0].mainPlugin);
 } else {
     // console.log('required as a module');
 }

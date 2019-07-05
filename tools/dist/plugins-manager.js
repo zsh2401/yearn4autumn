@@ -11,7 +11,7 @@ var pm = __importStar(require("./pages-scanner"));
 function getPlugins() {
     var result = new Array();
     pm.getPages().forEach(function (e, index) {
-        result[index] = e.getPlugin();
+        result[index] = e.mainPlugin;
     });
     ;
     return result;

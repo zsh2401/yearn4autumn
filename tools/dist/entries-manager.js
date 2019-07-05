@@ -10,8 +10,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var pm = __importStar(require("./pages-scanner"));
 function getEntries() {
     var result = {};
-    pm.getPages().forEach(function (e, index) {
-        var entry = e.getEntry();
+    pm.getPages().forEach(function (e) {
+        var entry = e.mainEntry;
         result[entry.name] = entry.file;
     });
     return result;
