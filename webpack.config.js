@@ -1,6 +1,7 @@
 const info = require('./info');
 const pluginsManager = require('./tools/dist/plugins-manager');
 const enritesManager = require('./tools/dist/entries-manager');
+const path = require('path');
 module.exports = {
     entry:enritesManager.getEntries(),
     output: {
@@ -16,10 +17,15 @@ module.exports = {
         port:9999
     },
     resolve: {
+        alias:{
+            hejs: path.resolve( __dirname,'src', 'common', 'hejs'),
+            hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
+        },
         extensions: ['.ts', '.js',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:pluginsManager.getPlugins(),
     module: {
+
         rules: [
             { test: /\.css$/, use: [
                 {

@@ -2,7 +2,7 @@ import * as path from 'path';
 export const rootDir =  path.resolve(__dirname,"..","..");
 export const outputDir= path.resolve(rootDir,"dist");
 export const srcDir = path.resolve(rootDir , "src");
-export const scriptsDir = path.resolve(srcDir , "scripts");
+export const commonDir = path.resolve(srcDir , "common");
 export const pagesDir = path.resolve(srcDir , "pages");
 export const entriesDir = path.resolve(srcDir , "entries");
 export const jadesDir = path.resolve(srcDir , "templates");

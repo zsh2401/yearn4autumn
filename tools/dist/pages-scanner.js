@@ -78,8 +78,29 @@ var FPage = /** @class */ (function (_super) {
     return FPage;
 }(Page));
 exports.FPage = FPage;
+var RPage = /** @class */ (function (_super) {
+    __extends(RPage, _super);
+    function RPage() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    RPage.prototype.getPlugin = function () {
+        var renderFile = path.resolve(this.dirPath, FILENAME_RENDER);
+        var fileName = this.name + ".html";
+        var outputHTMLPage = path.resolve(info.outputDir, fileName);
+        var result = new HtmlWebpackPlugin({
+            filename: outputHTMLPage,
+            template: renderFile,
+            chunks: ['site', this.entry.name],
+            hash: true,
+            xhtml: true,
+        });
+        return result;
+    };
+    return RPage;
+}(Page));
+exports.RPage = RPage;
 function getPages() {
-    return getNPages().concat(getFPages());
+    return getNPages().concat(getFPages()).concat(getRPages());
 }
 exports.getPages = getPages;
 function getNPages() {
@@ -112,8 +133,23 @@ function getFPages() {
     });
     return result;
 }
+function getRPages() {
+    var pdir = path.resolve(info.pagesDir, "root");
+    var dirs = fs.readdirSync(pdir);
+    var result = new Array();
+    dirs.forEach(function (e) {
+        try {
+            var tmp = new RPage(e, path.resolve(pdir, e));
+            result[result.length] = tmp;
+        }
+        catch (error) {
+            console.error(error);
+        }
+    });
+    return result;
+}
 if (require.main === module) {
-    console.log(getPages()[1].plugin);
+    console.log(getPages());
 }
 else {
     // console.log('required as a module');

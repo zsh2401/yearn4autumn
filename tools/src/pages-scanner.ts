@@ -61,9 +61,26 @@ export class FPage extends Page
         return result;
     }
 }
+export class RPage extends Page
+{
+    getPlugin():any
+    {
+        let renderFile = path.resolve(this.dirPath,FILENAME_RENDER);
+        let fileName = this.name + ".html";
+        let outputHTMLPage = path.resolve(info.outputDir,fileName);
+        let result = new HtmlWebpackPlugin({
+            filename: outputHTMLPage,
+            template: renderFile,
+            chunks: [ 'site', this.entry.name],
+            hash: true, // 为静态资源生成hash值
+            xhtml: true,
+        });
+        return result;
+    }
+}
 export function getPages():Array<Page>
 {
-    return getNPages().concat(getFPages());
+    return getNPages().concat(getFPages()).concat(getRPages());
 }
 function getNPages():Array<Page>{
     let pdir = path.resolve(info.pagesDir,"normal");
@@ -89,9 +106,21 @@ function getFPages():Array<FPage>{
     });
     return result;
 }
+function getRPages():Array<RPage>{
+    let pdir = path.resolve(info.pagesDir,"root");
+    var dirs = fs.readdirSync(pdir);
+    let result = new Array<RPage>();
+    dirs.forEach(e=>{
+        try{
+            let tmp = new RPage(e,path.resolve(pdir,e));
+            result[result.length] = tmp;
+        }catch(error){console.error(error);}
+    });
+    return result;
+}
 if (require.main === module)
 {
-    console.log(getPages()[1].plugin);
+    console.log(getPages());
 } else 
 {
     // console.log('required as a module');
