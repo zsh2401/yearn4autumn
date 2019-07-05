@@ -8,12 +8,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var pm = __importStar(require("./pages-scanner"));
+var info = __importStar(require("./infox"));
+var path = __importStar(require("path"));
 function getEntries() {
     var result = {};
     pm.getPages().forEach(function (e) {
-        var entry = e.mainEntry;
+        var entry = e.entry;
         result[entry.name] = entry.file;
     });
+    result["site"] = path.resolve(info.scriptsDir, "site.ts");
     return result;
 }
 exports.getEntries = getEntries;
+if (require.main === module) {
+    console.log(getEntries());
+}
+else {
+    // console.log('required as a module');
+}

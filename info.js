@@ -1,11 +1,17 @@
+const path = require('path');
+const rootDir =__dirname;
+const outputDir= path.resolve(rootDir , "dist");
+const srcDir =  path.resolve(rootDir,"src");
+const scriptsDir = path.resolve(srcDir , "scripts");
+const assestesDir = path.resolve(srcDir , "assestes");
+const cssDir = path.resolve(srcDir , "css");
+const dataDir = path.resolve(srcDir , "data");
 module.exports = {
-     rootDir :__dirname,
-     outputDir: __dirname + "/dist",
-     srcDir : __dirname + "/src",
-     scriptsDir : __dirname + "/src/scripts",
-     entriesDir : __dirname + "/src/entries",
-     jadesDir : __dirname + "/src/templates",
-     assestesDir : __dirname + "/src/assestes",
-     cssDir : __dirname + "/src/css",
-     dataDir : __dirname + "/src/data"
+     rootDir,
+     outputDir,
+     srcDir,
+     scriptsDir,
+     assestesDir,
+     cssDir,
+     dataDir
 }

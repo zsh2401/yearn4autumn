@@ -11,14 +11,14 @@ var pm = __importStar(require("./pages-scanner"));
 function getPlugins() {
     var result = new Array();
     pm.getPages().forEach(function (e, index) {
-        result[index] = e.mainPlugin;
+        result[index] = e.plugin;
     });
     ;
     return result;
 }
 exports.getPlugins = getPlugins;
 if (require.main === module) {
-    console.log(getPlugins()[0]);
+    console.log(getPlugins()[1]);
 }
 else {
     // console.log('required as a module');

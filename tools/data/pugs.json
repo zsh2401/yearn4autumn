@@ -1,7 +1,0 @@
-[
-    {"f":"/index","o":"index.html","chunks":["site","p_index"]},
-    {"f":"/404","o":"404.html","chunks":["site"]},
-    {"f":"/about","o":"/about/index.html","chunks":["site"]},
-    {"f":"/discover","o":"/discover/index.html","chunks":["site"]},
-    {"f":"/donate","o":"/donate/index.html","chunks":["site"]}
-]
