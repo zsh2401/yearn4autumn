@@ -27,7 +27,7 @@ var glob = __importStar(require("glob"));
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var FILENAME_RENDER = "render.js";
 var FILENAME_OUTPAGENAME = "index.html";
-var FILENAME_PATTERN_ENTRY = "index.*";
+var FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
 var Page = /** @class */ (function () {
     function Page(dirName, dirPath) {
         this.name = dirName;

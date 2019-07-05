@@ -5,7 +5,7 @@ import * as glob from 'glob';
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FILENAME_RENDER = "render.js";
 const FILENAME_OUTPAGENAME = "index.html";
-const FILENAME_PATTERN_ENTRY = "index.*";
+const FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
 export interface Entry{
     name:string;
     file:string;
