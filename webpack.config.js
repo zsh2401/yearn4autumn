@@ -1,4 +1,4 @@
-const info = require('./info');
+const info = require('./tools/dist/infox');
 const pluginsManager = require('./tools/dist/plugins-manager');
 const enritesManager = require('./tools/dist/entries-manager');
 const path = require('path');
@@ -18,6 +18,7 @@ module.exports = {
     },
     resolve: {
         alias:{
+            pinfo: path.resolve( __dirname,"info.js"),
             hejs: path.resolve( __dirname,'src', 'common', 'hejs'),
             hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
         },
