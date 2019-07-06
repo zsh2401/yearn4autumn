@@ -25,9 +25,10 @@ var fs = __importStar(require("fs"));
 var info = __importStar(require("./infox"));
 var glob = __importStar(require("glob"));
 var HtmlWebpackPlugin = require("html-webpack-plugin");
-var FILENAME_RENDER = "render.js";
 var FILENAME_OUTPAGENAME = "index.html";
 var FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
+var FILENAME_PATTERN_RENDER = "render.*(js|ts)";
+var FILENAME_FMANIFEST = "fun.json";
 var Page = /** @class */ (function () {
     function Page(dirName, dirPath) {
         this.name = dirName;
@@ -44,7 +45,7 @@ var Page = /** @class */ (function () {
         };
     };
     Page.prototype.getPlugin = function () {
-        var renderFile = path.resolve(this.dirPath, FILENAME_RENDER);
+        var renderFile = glob.sync(path.resolve(this.dirPath, FILENAME_PATTERN_RENDER))[0];
         var outputHTMLPage = path.resolve(info.outputDir, this.name, FILENAME_OUTPAGENAME);
         var result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
@@ -60,11 +61,14 @@ var Page = /** @class */ (function () {
 exports.Page = Page;
 var FPage = /** @class */ (function (_super) {
     __extends(FPage, _super);
-    function FPage() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function FPage(dirName, dirPath) {
+        var _this = _super.call(this, dirName, dirPath) || this;
+        var manifestText = fs.readFileSync(path.resolve(dirPath, FILENAME_FMANIFEST), 'utf-8');
+        _this.mainfest = JSON.parse(manifestText);
+        return _this;
     }
     FPage.prototype.getPlugin = function () {
-        var renderFile = path.resolve(this.dirPath, FILENAME_RENDER);
+        var renderFile = glob.sync(path.resolve(this.dirPath, FILENAME_PATTERN_RENDER))[0];
         var outputHTMLPage = path.resolve(info.outputDir, "f", this.name, FILENAME_OUTPAGENAME);
         var result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
@@ -84,7 +88,7 @@ var RPage = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     RPage.prototype.getPlugin = function () {
-        var renderFile = path.resolve(this.dirPath, FILENAME_RENDER);
+        var renderFile = glob.sync(path.resolve(this.dirPath, FILENAME_PATTERN_RENDER))[0];
         var fileName = this.name + ".html";
         var outputHTMLPage = path.resolve(info.outputDir, fileName);
         var result = new HtmlWebpackPlugin({
@@ -118,6 +122,7 @@ function getNPages() {
     });
     return result;
 }
+exports.getNPages = getNPages;
 function getFPages() {
     var pdir = path.resolve(info.pagesDir, "fun");
     var dirs = fs.readdirSync(pdir);
@@ -133,6 +138,7 @@ function getFPages() {
     });
     return result;
 }
+exports.getFPages = getFPages;
 function getRPages() {
     var pdir = path.resolve(info.pagesDir, "root");
     var dirs = fs.readdirSync(pdir);
@@ -148,6 +154,7 @@ function getRPages() {
     });
     return result;
 }
+exports.getRPages = getRPages;
 if (require.main === module) {
     console.log(getPages());
 }

@@ -3,9 +3,10 @@ import * as fs from 'fs';
 import * as info from './infox';
 import * as glob from 'glob';
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FILENAME_RENDER = "render.js";
 const FILENAME_OUTPAGENAME = "index.html";
 const FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
+const FILENAME_PATTERN_RENDER = "render.*(js|ts)";
+const FILENAME_FMANIFEST = "fun.json";
 export interface Entry{
     name:string;
     file:string;
@@ -33,7 +34,7 @@ export class Page{
     }
     protected getPlugin():any
     {
-        let renderFile = path.resolve(this.dirPath,FILENAME_RENDER);
+        let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
         let outputHTMLPage = path.resolve(info.outputDir,this.name,FILENAME_OUTPAGENAME);
         let result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
@@ -45,11 +46,21 @@ export class Page{
         return result;
     }
 }
+export interface FPageManifest{
+    name:string;
+    desc:string;
+}
 export class FPage extends Page
-{
+{   
+    mainfest:FPageManifest;
+    constructor(dirName:string,dirPath:string){
+        super(dirName,dirPath);
+        let manifestText = fs.readFileSync(path.resolve(dirPath,FILENAME_FMANIFEST),'utf-8');
+        this.mainfest = JSON.parse(manifestText);
+    }
     getPlugin():any
     {
-        let renderFile = path.resolve(this.dirPath,FILENAME_RENDER);
+        let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
         let outputHTMLPage = path.resolve(info.outputDir,"f",this.name,FILENAME_OUTPAGENAME);
         let result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
@@ -65,7 +76,7 @@ export class RPage extends Page
 {
     getPlugin():any
     {
-        let renderFile = path.resolve(this.dirPath,FILENAME_RENDER);
+        let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
         let fileName = this.name + ".html";
         let outputHTMLPage = path.resolve(info.outputDir,fileName);
         let result = new HtmlWebpackPlugin({
@@ -82,7 +93,7 @@ export function getPages():Array<Page>
 {
     return getNPages().concat(getFPages()).concat(getRPages());
 }
-function getNPages():Array<Page>{
+export function getNPages():Array<Page>{
     let pdir = path.resolve(info.pagesDir,"normal");
     var dirs = fs.readdirSync(pdir);
     let result = new Array<Page>();
@@ -94,7 +105,7 @@ function getNPages():Array<Page>{
     });
     return result;
 }
-function getFPages():Array<FPage>{
+export function getFPages():Array<FPage>{
     let pdir = path.resolve(info.pagesDir,"fun");
     var dirs = fs.readdirSync(pdir);
     let result = new Array<FPage>();
@@ -106,7 +117,7 @@ function getFPages():Array<FPage>{
     });
     return result;
 }
-function getRPages():Array<RPage>{
+export function getRPages():Array<RPage>{
     let pdir = path.resolve(info.pagesDir,"root");
     var dirs = fs.readdirSync(pdir);
     let result = new Array<RPage>();

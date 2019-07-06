@@ -21,6 +21,7 @@ module.exports = {
             pinfo: path.resolve( __dirname,"info.js"),
             hejs: path.resolve( __dirname,'src', 'common', 'hejs'),
             hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
+            pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts'),
         },
         extensions: ['.ts', '.js',".css",".png",".jpg",".ejs",".json",".pug"]
     },
