@@ -42,6 +42,11 @@ module.exports = {
                         loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
                 }
             },
+            { test: /\.nes?$/, 
+                use: {
+                        loader:'url-loader?limit=1&name=assests/nes/[name].nes'
+                }
+            },
             // {test: /\.pug$/,
             //     use:[
             //         {loader:'html-loader'},
