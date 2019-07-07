@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const site = require('../data/site.json');
+require("../../assests/leaf.png");
 function getData()
 {
     let result:any = {};
