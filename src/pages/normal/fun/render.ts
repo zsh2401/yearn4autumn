@@ -4,4 +4,5 @@ const template = require('./template.pug');
 let fpages = scanner.getFPages();
 const data = pugrender.getData();
 data.fpages = fpages;
+data.fp_len = fpages.length;
 module.exports = template(data);
