@@ -2,16 +2,22 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as info from './infox';
 import * as glob from 'glob';
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FILENAME_OUTPAGENAME = "index.html";
 const FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
 const FILENAME_PATTERN_RENDER = "render.*(js|ts)";
 const FILENAME_FMANIFEST = "fun.json";
+
+const NPAGES_DIR = path.resolve(info.pagesDir,"normal");
+const RPAGES_DIR = path.resolve(info.pagesDir,"root");
+const FPAGES_DIR = path.resolve(info.pagesDir,"fun");
+
 export interface Entry{
     name:string;
     file:string;
 }
-export class Page{
+export abstract class Page{
     public dirPath:string;
     public name:string;
     public entry:Entry;
@@ -32,6 +38,13 @@ export class Page{
             file:entryFile,
         };
     }
+    protected abstract getPlugin():any;
+}
+export interface FPageManifest{
+    name:string;
+    desc:string;
+}
+export class NPage extends Page{
     protected getPlugin():any
     {
         let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
@@ -45,10 +58,6 @@ export class Page{
         });
         return result;
     }
-}
-export interface FPageManifest{
-    name:string;
-    desc:string;
 }
 export class FPage extends Page
 {   
@@ -89,41 +98,41 @@ export class RPage extends Page
         return result;
     }
 }
+
+
 export function getPages():Array<Page>
 {
-    return getNPages().concat(getFPages()).concat(getRPages());
+    let pages:Array<Page> = [];
+    return pages.concat(getNPages()).concat(getFPages()).concat(getRPages());
 }
-export function getNPages():Array<Page>{
-    let pdir = path.resolve(info.pagesDir,"normal");
-    var dirs = fs.readdirSync(pdir);
-    let result = new Array<Page>();
+export function getNPages(_path:string=NPAGES_DIR):Array<NPage>{
+    var dirs = fs.readdirSync(_path);
+    let result = new Array<NPage>();
     dirs.forEach(e=>{
         try{
-            let tmp = new Page(e,path.resolve(pdir,e));
+            let tmp = new NPage(e,path.resolve(_path,e));
             result[result.length] = tmp;
         }catch(error){console.error(error);}
     });
     return result;
 }
-export function getFPages():Array<FPage>{
-    let pdir = path.resolve(info.pagesDir,"fun");
-    var dirs = fs.readdirSync(pdir);
+export function getFPages(_path:string=FPAGES_DIR):Array<FPage>{
+    var dirs = fs.readdirSync(_path);
     let result = new Array<FPage>();
     dirs.forEach(e=>{
         try{
-            let tmp = new FPage(e,path.resolve(pdir,e));
+            let tmp = new FPage(e,path.resolve(FPAGES_DIR,e));
             result[result.length] = tmp;
         }catch(error){console.error(error);}
     });
     return result;
 }
-export function getRPages():Array<RPage>{
-    let pdir = path.resolve(info.pagesDir,"root");
-    var dirs = fs.readdirSync(pdir);
+export function getRPages(_path:string=RPAGES_DIR):Array<RPage>{
+    var dirs = fs.readdirSync(_path);
     let result = new Array<RPage>();
     dirs.forEach(e=>{
         try{
-            let tmp = new RPage(e,path.resolve(pdir,e));
+            let tmp = new RPage(e,path.resolve(_path,e));
             result[result.length] = tmp;
         }catch(error){console.error(error);}
     });

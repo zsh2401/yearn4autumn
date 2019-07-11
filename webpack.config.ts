@@ -1,21 +1,15 @@
-const info = require('./tools/dist/infox');
-const pluginsManager = require('./tools/dist/plugins-manager');
-const enritesManager = require('./tools/dist/entries-manager');
-const path = require('path');
-module.exports = {
-    entry:enritesManager.getEntries(),
+import webpack from 'webpack';
+import path from 'path';
+import * as info from './src/common/build/infox';
+import * as build from "./src/common/build";
+const config: webpack.Configuration =  {
+    entry:build.getEntry(),
     output: {
         path : info.outputDir,
         filename:"js/[name].js",
         publicPath: '/'
     },
     mode:'production',
-    devServer:{
-        contentBase:info.outputDir,
-        historyApiFallback:true,
-        inline:true,
-        port:9999
-    },
     resolve: {
         alias:{
             pinfo: path.resolve( __dirname,"info.js"),
@@ -25,7 +19,7 @@ module.exports = {
         },
         extensions: ['.ts', '.js',".css",".png",".jpg",".ejs",".json",".pug"]
     },
-    plugins:pluginsManager.getPlugins(),
+    plugins:build.getPlugins(),
     module: {
 
         rules: [
@@ -40,7 +34,7 @@ module.exports = {
             { test: /\.ts$/, use: 'ts-loader' },
             { test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/, 
                 use: {
-                        loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+                        loader:'url-loader?limit=1&name=images/[name].[ext]'
                 }
             },
             { test: /\.nes?$/, 
@@ -48,14 +42,9 @@ module.exports = {
                         loader:'url-loader?limit=1&name=assests/nes/[name].nes'
                 }
             },
-            // {test: /\.pug$/,
-            //     use:[
-            //         {loader:'html-loader'},
-            //         {loader:'pug-html-loader'},
-            //     ]
-            // },
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.ejs$/, loader: 'ejs-loader' },
         ]
       }
 }
+export default config;
