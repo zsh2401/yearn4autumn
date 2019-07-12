@@ -17,6 +17,10 @@ export function getPlugins():webpack.Plugin[]{
     });;
     return result;
 }
-export function getDirectoriesMap(_projRootPath:string=null):dm.IDirectoriesMap{
+export function getDirectoriesMap(_projRootPath:string=null):dm.IDirectoriesMap
+{
     return new dm.DirectoriesMap(_projRootPath);
+}
+export function getProjRootPath():string{
+    return eval("__projRootDir");
 }

@@ -17,10 +17,10 @@ export class DirectoriesMap implements IDirectoriesMap{
         return this.projRootDir;
     }
     public get outputDir():string{
-        return  path.resolve(this.projRootDir,"dist");
+        return  path.resolve(this.rootDir,"dist");
     }
     public get srcDir():string{
-        return  path.resolve(this.projRootDir,"src");
+        return  path.resolve(this.rootDir,"src");
     }
     public get commonDir():string{
         return  path.resolve(this.srcDir,"common");

@@ -1,10 +1,14 @@
-import PageScanner  from './PageScanner';
-let pm= new PageScanner();
-import * as from '../../../common/build/infox';
+import PageScanner  from '../../../common/build/PageScanner';
+import {IDirectoriesMap, DirectoriesMap} from '../../../common/build/DirectoriesMap';
+import PagesScanner from '../../../common/build/PageScanner';
+
+declare var __projRootDir:string;
+
+let pm= new PageScanner(new DirectoriesMap(__projRootDir));
+
 const pugrender  = require('hpug');
 const template = require('./template.pug');
-declare var __projRootDir:string;
-declare var __globalDirsMap:DirectoriesMap;
+
 let fpages = pm.getFPages();
 const data = pugrender.getData();
 data.fpages = fpages;
