@@ -2,14 +2,17 @@ import webpack from 'webpack';
 import path from 'path';
 import * as build from "./src/common/build";
 import { DirectoriesMap } from './src/common/build/DirectoriesMap';
-let dirsMap = new DirectoriesMap(__dirname);
-let plugins = build.getPlugins();
-let entry = build.getEntry();
+import PagesScanner from './src/common/build/PageScanner';
+
+const scanner = new PagesScanner();
+const dirsMap = new DirectoriesMap(__dirname);
+
+const plugins = build.getPlugins(scanner);
+const entry = build.getEntry(scanner);
 
 entry["site"] = path.resolve(dirsMap.commonDir,"site");
 
 plugins[plugins.length] = new webpack.DefinePlugin({
-    '__globalDirsMap': JSON.stringify(dirsMap),
     '__projRootDir':JSON.stringify(__dirname)
 });
 
