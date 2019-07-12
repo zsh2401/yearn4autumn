@@ -2,10 +2,16 @@ import webpack from 'webpack';
 import path from 'path';
 import * as info from './src/common/build/infox';
 import * as build from "./src/common/build";
+import json5 = require('json5');
+let dirsMap:info.DirectoriesMap = new info.DirectoriesMap(__dirname);
+let plugins = build.getPlugins();
+let entry = build.getEntry();
+entry["site"] = path.resolve(dirsMap.commonDir,"site");
+plugins[plugins.length] = new webpack.DefinePlugin({'__globalDirsMap': JSON.stringify(dirsMap),'__projRootDir':JSON.stringify(__dirname)});
 const config: webpack.Configuration =  {
-    entry:build.getEntry(),
+    entry:entry,
     output: {
-        path : info.outputDir,
+        path : dirsMap.outputDir,
         filename:"js/[name].js",
         publicPath: '/'
     },
@@ -19,7 +25,7 @@ const config: webpack.Configuration =  {
         },
         extensions: ['.ts', '.js',".css",".png",".jpg",".ejs",".json",".pug"]
     },
-    plugins:build.getPlugins(),
+    plugins:plugins,
     module: {
 
         rules: [

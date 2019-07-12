@@ -1,19 +1,20 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as info from './infox';
+import * as build from './index';
 import * as glob from 'glob';
-
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 const FILENAME_OUTPAGENAME = "index.html";
 const FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
 const FILENAME_PATTERN_RENDER = "render.*(js|ts)";
 const FILENAME_FMANIFEST = "fun.json";
 
-const NPAGES_DIR = path.resolve(info.pagesDir,"normal");
-const RPAGES_DIR = path.resolve(info.pagesDir,"root");
-const FPAGES_DIR = path.resolve(info.pagesDir,"fun");
+const dirsMap = build.getDirectoriesMap();
+const NPAGES_OUT =dirsMap.outputDir;
+const RPAGES_OUT=dirsMap.outputDir;
+const FPAGES_OUT=path.resolve(dirsMap.outputDir,"f");
 
-export interface Entry{
+export interface Entry
+{
     name:string;
     file:string;
 }
@@ -38,7 +39,12 @@ export abstract class Page{
             file:entryFile,
         };
     }
-    protected abstract getPlugin():any;
+    protected abstract handlePluginOptions(options:HtmlWebpackPlugin.Options){
+        
+    }
+    protected getPlugin():HtmlWebpackPlugin{
+        let options =new 
+    }
 }
 export interface FPageManifest{
     name:string;
@@ -48,7 +54,7 @@ export class NPage extends Page{
     protected getPlugin():any
     {
         let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
-        let outputHTMLPage = path.resolve(info.outputDir,this.name,FILENAME_OUTPAGENAME);
+        let outputHTMLPage = path.resolve(NPAGES_OUT,this.name,FILENAME_OUTPAGENAME);
         let result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
             template: renderFile,
@@ -61,16 +67,16 @@ export class NPage extends Page{
 }
 export class FPage extends Page
 {   
-    mainfest:FPageManifest;
+    manifest:FPageManifest;
     constructor(dirName:string,dirPath:string){
         super(dirName,dirPath);
         let manifestText = fs.readFileSync(path.resolve(dirPath,FILENAME_FMANIFEST),'utf-8');
-        this.mainfest = JSON.parse(manifestText);
+        this.manifest = JSON.parse(manifestText);
     }
-    getPlugin():any
+    getPlugin():HtmlWebpackPlugin
     {
         let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
-        let outputHTMLPage = path.resolve(info.outputDir,"f",this.name,FILENAME_OUTPAGENAME);
+        let outputHTMLPage = path.resolve(FPAGES_OUT,this.name,FILENAME_OUTPAGENAME);
         let result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
             template: renderFile,
@@ -83,11 +89,11 @@ export class FPage extends Page
 }
 export class RPage extends Page
 {
-    getPlugin():any
+    getPlugin():HtmlWebpackPlugin
     {
         let renderFile = glob.sync(path.resolve(this.dirPath,FILENAME_PATTERN_RENDER))[0];
         let fileName = this.name + ".html";
-        let outputHTMLPage = path.resolve(info.outputDir,fileName);
+        let outputHTMLPage = path.resolve(RPAGES_OUT,fileName);
         let result = new HtmlWebpackPlugin({
             filename: outputHTMLPage,
             template: renderFile,
@@ -98,50 +104,53 @@ export class RPage extends Page
         return result;
     }
 }
-
-
-export function getPages():Array<Page>
+/**Pages Scanner */
+export default class PagesScanner
 {
-    let pages:Array<Page> = [];
-    return pages.concat(getNPages()).concat(getFPages()).concat(getRPages());
-}
-export function getNPages(_path:string=NPAGES_DIR):Array<NPage>{
-    var dirs = fs.readdirSync(_path);
-    let result = new Array<NPage>();
-    dirs.forEach(e=>{
-        try{
-            let tmp = new NPage(e,path.resolve(_path,e));
-            result[result.length] = tmp;
-        }catch(error){console.error(error);}
-    });
-    return result;
-}
-export function getFPages(_path:string=FPAGES_DIR):Array<FPage>{
-    var dirs = fs.readdirSync(_path);
-    let result = new Array<FPage>();
-    dirs.forEach(e=>{
-        try{
-            let tmp = new FPage(e,path.resolve(FPAGES_DIR,e));
-            result[result.length] = tmp;
-        }catch(error){console.error(error);}
-    });
-    return result;
-}
-export function getRPages(_path:string=RPAGES_DIR):Array<RPage>{
-    var dirs = fs.readdirSync(_path);
-    let result = new Array<RPage>();
-    dirs.forEach(e=>{
-        try{
-            let tmp = new RPage(e,path.resolve(_path,e));
-            result[result.length] = tmp;
-        }catch(error){console.error(error);}
-    });
-    return result;
-}
-if (require.main === module)
-{
-    console.log(getPages());
-} else 
-{
-    // console.log('required as a module');
+    /**constructor
+     * @param dirsMap the scanner base IDirectoriesMap
+     */
+    constructor(private dirsMap=build.getDirectoriesMap()){}
+    /**get all pages */
+    getPages():Array<Page>
+    {
+        let pages:Array<Page> = [];
+        return pages.concat(this.getNPages()).concat(this.getFPages()).concat(this.getRPages());
+    }
+    /** Get all normal pages */
+    getNPages():Array<NPage>{
+        var dirs = fs.readdirSync(this.dirsMap.npagesDir);
+        let result = new Array<NPage>();
+        dirs.forEach(e=>{
+            try{
+                let tmp = new NPage(e,path.resolve(this.dirsMap.npagesDir,e));
+                result[result.length] = tmp;
+            }catch(error){console.error(error);}
+        });
+        return result;
+    }
+    /**get all fun pages */
+    getFPages():Array<FPage>{
+        var dirs = fs.readdirSync(this.dirsMap.fpagesDir);
+        let result = new Array<FPage>();
+        dirs.forEach(e=>{
+            try{
+                let tmp = new FPage(e,path.resolve(this.dirsMap.fpagesDir,e));
+                result[result.length] = tmp;
+            }catch(error){console.error(error);}
+        });
+        return result;
+    }
+    /** get all root pages */
+    getRPages():Array<RPage>{
+        var dirs = fs.readdirSync(this.dirsMap.rpagesDir);
+        let result = new Array<RPage>();
+        dirs.forEach(e=>{
+            try{
+                let tmp = new RPage(e,path.resolve(this.dirsMap.rpagesDir,e));
+                result[result.length] = tmp;
+            }catch(error){console.error(error);}
+        });
+        return result;
+    }
 }

@@ -1,7 +1,11 @@
-import * as scanner from '../../../common/build/pages-scanner';
+import PageScanner  from './PageScanner';
+let pm= new PageScanner();
+import * as from '../../../common/build/infox';
 const pugrender  = require('hpug');
 const template = require('./template.pug');
-let fpages = scanner.getFPages();
+declare var __projRootDir:string;
+declare var __globalDirsMap:DirectoriesMap;
+let fpages = pm.getFPages();
 const data = pugrender.getData();
 data.fpages = fpages;
 data.fp_len = fpages.length;
