@@ -48,12 +48,12 @@ const config: webpack.Configuration =  {
             { test: /\.ts$/, use: 'ts-loader' },
             { test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/, 
                 use: {
-                        loader:'url-loader?limit=1&name=images/[name].[ext]'
+                        loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
                 }
             },
-            { test: /\.nes?$/, 
+            { test: /\.(nes|gba)?$/, 
                 use: {
-                        loader:'url-loader?limit=1&name=assests/nes/[name].nes'
+                        loader:'url-loader?name=assests/rom/[name].[ext]'
                 }
             },
             { test: /\.pug$/, loader: 'pug-loader' },

@@ -59,12 +59,17 @@ export abstract class Page{
     {
         return [ 'site', this.entry.name];
     }
+    protected getIcon():string
+    {
+        return  path.resolve(this.dirsMap.assestsDir,"favicon.ico");
+    }
     protected getPluginOptions(): HtmlWebpackPlugin.Options
     {
         return {
             filename:this.getOutputFile(),
             template:this.getRenderFile(),
             chunks: this.getChunks(),
+            favicon:this.getIcon(),
             hash: true, // 为静态资源生成hash值
             xhtml: true,
         };
@@ -92,7 +97,7 @@ export class FPage extends Page
         this.manifest = JSON.parse(manifestText);
     }
     protected getOutputFile(){
-        return path.resolve(this.dirsMap.fpagesDir,this.name,FILENAME_OUTPAGENAME);
+        return path.resolve(this.dirsMap.outputDir,'f',this.name,FILENAME_OUTPAGENAME);
     }
 }
 
