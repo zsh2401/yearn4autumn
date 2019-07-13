@@ -14,7 +14,7 @@ export default class PagesScanner
     getPages():Array<Page>
     {
         let pages:Array<Page> = [];
-        return this.getFPages();
+        // return this.getFPages();
         return pages.concat(this.getNPages()).concat(this.getFPages()).concat(this.getRPages());
     }
     /** Get all normal pages */

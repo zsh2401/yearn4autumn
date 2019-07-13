@@ -83,6 +83,7 @@ export abstract class Page{
 export interface FPageManifest{
     name:string;
     desc:string;
+    hide:boolean;
 }
 
 export class NPage extends Page{}

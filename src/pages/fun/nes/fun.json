@@ -1,4 +1,5 @@
 {
     "name":"NES模拟器",
-    "desc":"无需下载,在线玩NES(FC)游戏"
+    "desc":"无需下载,在线玩NES(FC)游戏",
+    "hide":true
 }

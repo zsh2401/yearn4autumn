@@ -1,4 +1,5 @@
 {
     "name":"GBA模拟器",
-    "desc":"无需下载,在线玩GBA游戏"
+    "desc":"无需下载,在线玩GBA游戏",
+    "hide":true
 }
