@@ -2,17 +2,33 @@ extends ../../../common/hpug/body
 block title
     title 在线图片压缩-慕秋
 block content
-    h2 在线图片压缩
-        small 基于开源项目:compress.js
-    .row   
-        .col-md-6.col-sm-6.col-xs-12
+    .row
+        .col-md-4
+            h3 在线图片压缩
+            h5 基于compress.js
+            br
             input(id="upload" type="file")
-            span.help-block 首先,上传图片
-            input(id="range" style="width:50%" type="range" value="20")
-            span.help-block
-                span .压缩率:
-                span#percent
-                span %
-        .col-md-6.col-sm-6.col-xs-12
-            h3 右键或长按即可保存压缩后的图片
-            img#display.img-responsive
+            span.help-block 请上传您需要压缩的图片,单选
+            br
+
+            div(style="display:none")#conrols-panel
+                h4 控制面板
+                p 压缩率:
+                input(id="range" type="range" value='70')
+                br
+                p
+                    span 压缩前大小:
+                    span#before-size 0
+                    span kB
+                p
+                    span 压缩后大小:
+                    span#compressed-size 0
+                    span kB
+                p 
+                    span 压缩率:
+                    span#c-rate 70
+                    span %
+
+        div(style="display:none")#display-area.col-md-8
+            .alert.alert-success 右键或长按即可保存结果!
+            img#display.img-responsive.center-block
