@@ -4,11 +4,15 @@ block title
 block content
     h2 在线图片压缩
         small 基于开源项目:compress.js
-    p 第一步:上传图片
-    p 第二步:根据需要调整图片质量
-    p 第三步:右键或长按保存图片
-
-    input(id="upload" type="file")
-    input(id="range" style="width:50%" type="range")
-    div(style="width:100%;height:1px;background:gray")
-    img#display
+    .row   
+        .col-md-6.col-sm-6.col-xs-12
+            input(id="upload" type="file")
+            span.help-block 首先,上传图片
+            input(id="range" style="width:50%" type="range" value="20")
+            span.help-block
+                span .压缩率:
+                span#percent
+                span %
+        .col-md-6.col-sm-6.col-xs-12
+            h3 右键或长按即可保存压缩后的图片
+            img#display.img-responsive

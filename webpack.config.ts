@@ -56,6 +56,7 @@ const config: webpack.Configuration =  {
                         loader:'url-loader?name=assests/rom/[name].[ext]'
                 }
             },
+            { test: /CNAME$/, use: 'file-loader?name=/CNAME' },
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.ejs$/, loader: 'ejs-loader' },
         ]
