@@ -2,4 +2,38 @@ extends ../../../common/hpug/body
 block title
     title 云顶之弈装备助手-慕秋
 block content
-    h1 hehe
+    .row 
+        .col-md-6.col-xs-6
+            h3 物品1
+            .row
+                for item in items
+                    .col-md-3.col-xs-6
+                        div(style="height:20px;width:20px;background:gray")
+                            img(src=item.imgSrc).img-responsive
+                        p #{item.name}
+            br
+            p.text-center
+                div(style="height:20px;width:20px;background:gray")
+                    img#selectedItemPic.img-responsive
+                p#selectedItemName -
+                    
+        .col-md-6.col-xs-6
+            h3 物品2
+            .row
+                for item in items
+                    .col-md-3.col-xs-6
+                        div(style="height:20px;width:20px;background:gray")
+                            img(src=item.imgSrc).img-responsive
+                        p #{item.name}
+            br
+            p.text-center
+                div(style="height:20px;width:20px;background:gray")
+                    img#selectedItemPic.img-responsive
+                p#selectedItemName -
+
+        p.text-center
+            h2 合成结果
+                div(style="height:50px;width:50px;background:gray")
+                    img#resultPic.img-responsive
+                p#resultName -
+                p#resultDesc -
