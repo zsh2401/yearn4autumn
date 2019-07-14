@@ -9,7 +9,7 @@ block content
             h3.text-center 物品1
             .row
                 for item in items
-                    div(iid=item.id).col-md-3.col-xs-6.crafting-item-1
+                    div(iid=item.id).col-md-3.col-sm-4.col-xs-6.crafting-item-1
                         img(style="height:30px;width:30px;background:gray" src=item.imgSrc).img-responsive.center-block
                         p.text-center #{item.name}
             br
@@ -22,7 +22,7 @@ block content
             h3.text-center 物品2
             .row
                 for item in items
-                    div(iid=item.id).col-md-3.col-xs-6.crafting-item-2
+                    div(iid=item.id).col-md-3.col-sm-4.col-xs-6.crafting-item-2
                         img(style="height:30px;width:30px;background:gray" src=item.imgSrc).img-responsive.center-block
                         p.text-center #{item.name}
 
