@@ -10,10 +10,22 @@ export const itemsCraftData:number[][] = [
     [-1,-1,-1,-1,-1,-1,42,43],
     [-1,-1,-1,-1,-1,-1,-1,44]
 ]
-export function getItemById(id:number){
-    //这里其实可以使用更好的算法,但无奈我的数学太差...
-    //以后改吧
+class CraftTable{
+    constructor(
+    public readonly item1:number,
+    public readonly item2:number){}
+}
+export function getItemById(id:number):Item{
     return items[--id];
+}
+export function getCraftTableById(id:number):CraftTable{
+    for(let x = 1;x<=8;x++){
+        for(let y = 1;x<=8;y++){
+            if(itemsCraftData[x][y] == id)
+                return new CraftTable(x,y);
+        }
+    }
+    return new CraftTable(1,1);
 }
 export function getCraftResult(item1:number,item2:number):Item{
     let result = itemsCraftData[--item1][--item2];

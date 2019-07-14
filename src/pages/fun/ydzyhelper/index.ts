@@ -88,3 +88,5 @@ function item2Click(event:MouseEvent){
     crafter.updateRight(iid);
 }
 bindEvents();
+const guideImage = document.getElementById("guideImg") as HTMLImageElement;
+guideImage.src = require("./imgs/guide.png");
