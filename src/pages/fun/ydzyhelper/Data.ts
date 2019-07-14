@@ -36,7 +36,7 @@ export function getCraftResult(item1:number,item2:number):Item{
 }
 export const items:Item[] = 
 [
-    new Item(1,"暴风大剑"),
+    new Item(1,"暴风大剑","+20攻击力"),
     new Item(2,"反曲之弓"),
     new Item(3,"无用大棒"),
     new Item(4,"眼泪"),
@@ -44,7 +44,7 @@ export const items:Item[] =
     new Item(6,"锁子甲"),
     new Item(7,"负极斗篷"),
     new Item(8,"金铲铲"),
-    new Item(9,"无尽之刃"),
+    new Item(9,"无尽之刃","+100%暴击伤害"),
     new Item(10,"鸡儿刀"),
     new Item(11,"海克斯科技枪"),
     new Item(12,"青龙偃月刀"),

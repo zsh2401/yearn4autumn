@@ -5,39 +5,47 @@ block content
     h2 云顶之弈-装备合成助手
     h5 比看图更方便,数据更新于2019年7月14日
     .row 
-        .col-md-6.col-xs-6
+        .col-md-5.col-sm-5.col-xs-6
             h3.text-center 物品1
             .row
                 for item in items
                     div(iid=item.id).col-md-3.col-sm-4.col-xs-6.crafting-item-1
-                        img(style="height:30px;width:30px;background:gray" src=item.imgSrc).img-responsive.center-block
+                        img(style="height:40px;width:40px;background:gray" src=item.imgSrc).img-responsive.center-block
                         p.text-center #{item.name}
             br
             div
-                img(style="height:30px;width:30px;background:gray")#selectedItem1Pic.img-responsive.center-block
-                p#selectedItem1Name.text-center -
-                p#selectedItem1Desc.text-center -
-                    
-        .col-md-6.col-xs-6
+                img(style="height:40px;width:40px;background:gray")#selectedItem1Pic.img-responsive.center-block
+                h4.text-center
+                    span#selectedItem1Name -
+                    br
+                    small#selectedItem1Desc -
+
+        .col-md-2.col-sm-2.hidden-xs
+        
+        .col-md-5.col-sm-5.col-xs-6
             h3.text-center 物品2
             .row
                 for item in items
                     div(iid=item.id).col-md-3.col-sm-4.col-xs-6.crafting-item-2
-                        img(style="height:30px;width:30px;background:gray" src=item.imgSrc).img-responsive.center-block
+                        img(style="height:40px;width:40px;background:gray" src=item.imgSrc).img-responsive.center-block
                         p.text-center #{item.name}
 
             br
             div
-                img(style="height:30px;width:30px;background:gray")#selectedItem2Pic.img-responsive.center-block
-                p#selectedItem2Name.text-center -
-                p#selectedItem2Desc.text-center -
+                img(style="height:40px;width:40px;background:gray")#selectedItem2Pic.img-responsive.center-block
+                h4.text-center
+                    span#selectedItem2Name -
+                    br
+                    small#selectedItem2Desc -
         br
 
     div
         h4.text-center 合成结果
         br
         img(style="height:50px;width:50px;background:gray")#resultImg.img-responsive.center-block
-        p#resultName.text-center -
-        p#resultDesc.text-center -
+        h4.text-center
+            span#resultName -
+            br
+            small#resultDesc -
 
     img#guideImg.img-responsive.center-block

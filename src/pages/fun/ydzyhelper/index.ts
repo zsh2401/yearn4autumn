@@ -40,19 +40,19 @@ class CraftGuide
     private updateItem1Info(id:number){
         let item = getItemById(id);
         this.view.eleSelectedItem1Name.textContent = item.name;
+        this.view.eleSelectedItem1Desc.textContent = item.description == null ? "-" : item.description;
         this.view.eleSelectedItem1Img.src = item.imgSrc;
-        this.view.eleSelectedItem1Desc.textContent = item.description;
     }
     private updateItem2Info(id:number){
         let item = getItemById(id);
         this.view.eleSelectedItem2Name.textContent = item.name;
+        this.view.eleSelectedItem2Desc.textContent = item.description == null ? "-" : item.description;
         this.view.eleSelectedItem2Img.src = item.imgSrc;
-        this.view.eleSelectedItem2Desc.textContent = item.description;
     }
     private updateCraftResultInfo(item:Item){
         this.view.eleResultName.textContent = item.name;
+        this.view.eleResultDesc.textContent = item.description == null ? "-" : item.description;
         this.view.eleResultImg.src = item.imgSrc;
-        this.view.eleResultDesc.textContent = item.description;
     }
 }
 let crafter = new CraftGuide({
