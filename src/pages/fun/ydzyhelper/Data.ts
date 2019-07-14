@@ -10,10 +10,15 @@ export const itemsCraftData:number[][] = [
     [-1,-1,-1,-1,-1,-1,42,43],
     [-1,-1,-1,-1,-1,-1,-1,44]
 ]
+export function getItemById(id:number){
+    //这里其实可以使用更好的算法,但无奈我的数学太差...
+    //以后改吧
+    return items[--id];
+}
 export function getCraftResult(item1:number,item2:number):Item{
     let result = itemsCraftData[--item1][--item2];
     if(result==-1){
-        result = itemsCraftData[--item2][--item1];
+        result = itemsCraftData[item2][item1];
     }
     return items[--result];
 }
