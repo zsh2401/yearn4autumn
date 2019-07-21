@@ -1,6 +1,6 @@
 import webpack from 'webpack';
-import PageScanner  from './PageScanner';
-import * as dm from "./DirectoriesMap";
+import PageScanner  from './pages-scanner';
+import * as dm from "./directories-map";
 export function getEntry(pm=new PageScanner()):webpack.Entry{
     var result:webpack.Entry = {};
     pm.getPages().forEach((e)=>{

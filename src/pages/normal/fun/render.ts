@@ -1,6 +1,5 @@
-import PageScanner  from '../../../common/build/PageScanner';
-import {IDirectoriesMap, DirectoriesMap} from '../../../common/build/DirectoriesMap';
-import PagesScanner from '../../../common/build/PageScanner';
+import PageScanner  from '../../../common/build/pages-scanner';
+import {IDirectoriesMap, DirectoriesMap} from '../../../common/build/directories-map';
 
 declare var __projRootDir:string;
 

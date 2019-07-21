@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import {Page,FPage,NPage,RPage} from './Pages';
-import { DirectoriesMap, IDirectoriesMap } from './DirectoriesMap';
+import {Page,FPage,NPage,RPage} from './pages';
+import { DirectoriesMap, IDirectoriesMap } from './directories-map';
 
 /**Pages Scanner */
 export default class PagesScanner

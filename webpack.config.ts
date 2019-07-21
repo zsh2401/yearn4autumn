@@ -1,8 +1,8 @@
 import webpack from 'webpack';
 import path from 'path';
 import * as build from "./src/common/build";
-import { DirectoriesMap } from './src/common/build/DirectoriesMap';
-import PagesScanner from './src/common/build/PageScanner';
+import { DirectoriesMap } from './src/common/build/directories-map';
+import PagesScanner from './src/common/build/pages-scanner';
 
 const scanner = new PagesScanner();
 const dirsMap = new DirectoriesMap(__dirname);
@@ -31,7 +31,7 @@ const config: webpack.Configuration =  {
             hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
             pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts'),
         },
-        extensions: ['.ts', '.js',".css",".png",".jpg",".ejs",".json",".pug"]
+        extensions: ['.ts', '.js','tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:plugins,
     module: {
@@ -45,7 +45,7 @@ const config: webpack.Configuration =  {
                 }
                 ] 
             },
-            { test: /\.ts$/, use: 'ts-loader' },
+            { test: /\.ts(x?)$/, use: 'ts-loader' },
             { test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/, 
                 use: {
                         loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
@@ -59,6 +59,7 @@ const config: webpack.Configuration =  {
             { test: /CNAME$/, use: 'file-loader?name=/CNAME' },
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.ejs$/, loader: 'ejs-loader' },
+            // { test: /\.js|jsx$/, loader: 'babel-loader' },
         ]
       }
 }

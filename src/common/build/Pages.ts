@@ -2,10 +2,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { IDirectoriesMap, DirectoriesMap } from './DirectoriesMap';
+import { IDirectoriesMap, DirectoriesMap } from './directories-map';
 
 const FILENAME_OUTPAGENAME = "index.html";
-const FILENAME_PATTERN_ENTRY = "index.*(js|ts)";
+const FILENAME_PATTERN_ENTRY = "index.*(js|jsx|tsx|ts)";
 const FILENAME_PATTERN_RENDER = "render.*(js|ts)";
 
 export interface Entry
