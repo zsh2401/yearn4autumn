@@ -1,5 +1,5 @@
 import React from 'react';
-import { CNZZ } from './CNZZ';
+import CNZZ from './CNZZ';
 export default class Footer extends React.Component{
     render(){
         return (

@@ -53,7 +53,7 @@ export class BuildHelper{
                 notice:consts.notice,
                 xhtml:true,
                 hash:true,
-                chunks:["site","vcomments",manifest.entry_name]
+                chunks:["site",manifest.entry_name]
             };
             tmp.push(new HtmlWebpackPlugin(config));
         })

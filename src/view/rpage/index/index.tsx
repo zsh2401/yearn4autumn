@@ -6,6 +6,7 @@ import Header from './Header';
 import Notice from '../../controls/Notice';
 import Footer from '../../controls/Footer';
 import Container from '../../controls/Container';
+import ValineComment from '../../controls/ValineComment';
 require("./app.css");
 class App extends React.Component{
     render(){
@@ -16,6 +17,7 @@ class App extends React.Component{
                 <Container>
                     <Notice></Notice>
                     <h1>Hello Index!</h1>
+                    <ValineComment></ValineComment>
                     <Footer></Footer>
                 </Container>
             </PlainApp>)
