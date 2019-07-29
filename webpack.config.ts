@@ -1,19 +1,21 @@
 import webpack from 'webpack';
 import path from 'path';
-import * as build from "./src/common/build";
+import * as buildv2 from "./src/common/buildV2";
 import { DirectoriesMap } from './src/common/build/directories-map';
-import PagesScanner from './src/common/build/pages-scanner';
 
-const scanner = new PagesScanner();
+
 const dirsMap = new DirectoriesMap(__dirname);
-
-const plugins = build.getPlugins(scanner);
-const entry = build.getEntry(scanner);
+const helper:buildv2.BuildHelper = new buildv2.BuildHelper(dirsMap);
+helper.load();
+const plugins = helper.PagePlugins
+const entry = helper.Entry;
 
 entry["site"] = path.resolve(dirsMap.commonDir,"site");
+entry["vcomment"] = path.resolve(dirsMap.commonDir,"vcomment");
 
 plugins[plugins.length] = new webpack.DefinePlugin({
-    '__projRootDir':JSON.stringify(__dirname)
+    '__projRootDir':JSON.stringify(__dirname),
+    "REACT_PAGE":JSON.stringify(path.resolve(dirsMap.commonDir,"hpug","react.pug")),
 });
 
 const config: webpack.Configuration =  {

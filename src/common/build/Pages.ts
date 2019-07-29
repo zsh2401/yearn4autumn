@@ -57,7 +57,7 @@ export abstract class Page{
     }
     protected getChunks():Array<string>
     {
-        return [ 'site', this.entry.name];
+        return [ 'site', 'vcomment',this.entry.name];
     }
     protected getIcon():string
     {

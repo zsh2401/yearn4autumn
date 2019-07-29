@@ -1,13 +1,10 @@
-declare class Valine{
-    constructor(data:any);
-}
-declare let AV;
+import Valine from 'valine';
+import AV from 'leancloud-storage'
 import $ from 'jquery';
-import { declareInterface } from 'babel-types';
 const ID_VCOMMENT = "#vcomment";
 const ATTR_PATH = "vpath";
-const APP_KEY = "";
-const APP_ID = "";
+const APP_KEY = "tbxvzkH4jwUeBCtaGycRCJTT";
+const APP_ID = "QOFSJwU9VLLKTx9O5rsubQAT-gzGzoHsz";
 $(document).ready(()=>{
     let _path = $(ID_VCOMMENT).attr(ATTR_PATH);
     new Valine({
