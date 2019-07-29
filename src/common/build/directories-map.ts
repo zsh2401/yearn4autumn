@@ -11,10 +11,14 @@ export interface IDirectoriesMap
     fpagesDir:string;
     rpagesDir:string;
     npagesDir:string;
+    viewDir:string;
 }
 export class DirectoriesMap implements IDirectoriesMap{
     public get rootDir():string{
         return this.projRootDir;
+    }
+    public get viewDir():string{
+        return path.resolve(this.srcDir,"view");
     }
     public get outputDir():string{
         return  path.resolve(this.rootDir,"dist");
@@ -26,19 +30,19 @@ export class DirectoriesMap implements IDirectoriesMap{
         return  path.resolve(this.srcDir,"common");
     }
     public get pagesDir():string{
-        return  path.resolve(this.srcDir,"pages");
+        return  this.viewDir;
     }
     public get assestsDir():string{
         return  path.resolve(this.srcDir,"assests");
     }
     public get fpagesDir():string{
-        return  path.resolve(this.pagesDir,"fun");
+        return  path.resolve(this.pagesDir,"fpage");
     }
     public get rpagesDir():string{
-        return  path.resolve(this.pagesDir,"root");
+        return  path.resolve(this.pagesDir,"rpage");
     }
     public get npagesDir():string{
-        return  path.resolve(this.pagesDir,"normal");
+        return  path.resolve(this.pagesDir,"npage");
     }
     constructor(private projRootDir:string=DEFAULT_PROJ_ROOT_DIR){}
 }

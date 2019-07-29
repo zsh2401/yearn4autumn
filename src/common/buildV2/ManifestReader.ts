@@ -39,7 +39,7 @@ export class ManifestReader{
             manifest.icon = path.resolve(dirPath,manifest.icon);
         }
         if(manifest.template === "std-react")
-            manifest.template = path.resolve(this.dirsMap.commonDir,"templates","react","std.pug")
+            manifest.template = path.resolve(this.dirsMap.srcDir,"view","template","std-react.pug")
         else if(manifest.template === "std-pug")
             manifest.template = path.resolve(this.dirsMap.commonDir,"hpug","body.pug")
         else

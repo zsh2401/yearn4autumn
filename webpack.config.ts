@@ -33,7 +33,7 @@ const config: webpack.Configuration =  {
             hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
             pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts'),
         },
-        extensions: ['.ts', '.js','tsx',".css",".png",".jpg",".ejs",".json",".pug"]
+        extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:plugins,
     module: {
