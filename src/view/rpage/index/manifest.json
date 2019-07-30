@@ -1,8 +1,0 @@
-{
-    "template":"std-react",
-    "entry":"index.tsx",
-    "output":"index.html",
-
-    "title":"慕秋-什么都有",
-    "desc":"慕秋-什么都有"
-}
