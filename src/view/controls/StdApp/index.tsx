@@ -5,12 +5,12 @@ import Container from '../Container';
 import NavBar from './NavBar';
 export default class StdApp extends React.Component{
     render(){
-        return (<Layout>
+        return (<div>
             <NavBar></NavBar>
             <Container>
                 {this.props.children}
                 <Footer></Footer>
             </Container>
-        </Layout>)
+        </div>)
     }
 }
