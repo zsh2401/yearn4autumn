@@ -1,7 +1,6 @@
-import fs from 'fs'
-export default interface IManifest
+export default interface IPageConfig
 {
-    renderer?:string;
+    template?:string;
     
     entry_name?:string;
     entry_path:string;
@@ -10,8 +9,10 @@ export default interface IManifest
     title?:string,
     desc?:string,
     icon?:string;
+
+    ext_data?:any;
 }
-export interface IFunManifest extends IManifest
+export interface IFunPageConfig extends IPageConfig
 {
     f_hide?:boolean;
     f_name:string;

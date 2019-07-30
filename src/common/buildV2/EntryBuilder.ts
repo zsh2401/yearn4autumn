@@ -1,5 +1,4 @@
 import { IDirectoriesMap } from "../directories-map";
-import IPage from './IPage'
 import webpack from 'webpack';
 import { IPerfectPageData } from "./PageDataCompleter";
 export default class EntryBuilder{

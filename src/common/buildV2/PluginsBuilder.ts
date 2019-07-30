@@ -1,9 +1,6 @@
 import { IDirectoriesMap } from "../directories-map";
-import  IManifest from "./IManifest";
-import IPage from './IPage'
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import ReactRender from '../react-render'
 import { IPerfectPageData } from "./PageDataCompleter";
 export default class PluginBuilder{
     constructor(private dirsMap:IDirectoriesMap,private pages:Array<IPerfectPageData>)
@@ -15,12 +12,13 @@ export default class PluginBuilder{
         this.pages.forEach(page=>{
             let options:HtmlWebpackPlugin.Options = {
                 filename: page.manifest.output,
-                template: page.manifest.renderer,
+                template:page.manifest.template,
                 chunks:["site",page.manifest.entry_name],
                 favicon:page.manifest.icon,
                 hash:true,
                 xhtml:true,
                 title:page.manifest.title,
+                data:page.manifest.ext_data,
                 meta:{
                     "description":page.manifest.desc
                 }

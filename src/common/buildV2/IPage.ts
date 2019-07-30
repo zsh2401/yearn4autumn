@@ -1,6 +1,6 @@
-import IManifest  from "./IManifest";
+import IPageConfig  from "./IPageConfig";
 
 export default interface IPage{
     dirPath:string;
-    manifest:IManifest;
+    manifest:IPageConfig;
 }

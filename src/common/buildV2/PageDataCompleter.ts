@@ -1,8 +1,9 @@
 import { IDirectoriesMap } from "../directories-map";
 import IPage from "./IPage";
-import IManifest  from "./IManifest";
+import IManifest  from "./IPageConfig";
 import * as index from '.'
 import path from 'path'
+import fs from 'fs';
 export default class PageDataCompleter{
     constructor(private dirsMap:IDirectoriesMap,private pages:Array<IPage>){}
     getResult():Array<IPerfectPageData>{
@@ -19,24 +20,30 @@ export default class PageDataCompleter{
             manifest:this.getPerfectManifestOf(page)
         }
     }
-    private getPerfectManifestOf(page:IPage):IPerfectManifest{
+    private getPerfectManifestOf(page:IPage):IPerfectPageConfig{
         return {
-            renderer : this.getRendererPath(page),
+            template : this.getTamplatePath(page),
             entry_name: page.manifest.entry_name ||  "___entry_of_" + index.getLastDir(page.dirPath),
             entry_path: this.getEntryPath(page),
             output:page.manifest.output,
 
+            ext_data:page.manifest.ext_data || {},
             title:page.manifest.title || "未标题",
             desc:page.manifest.desc || "慕秋,什么都有",
             icon:this.getIconPath(page)
         };
     }
-    private getRendererPath(page:IPage):string{
-        if(page.manifest.renderer){
-            return path.resolve(page.dirPath,page.manifest.renderer);
+    private getTamplatePath(page:IPage):string{
+        let result = null;
+        if(page.manifest.template){
+            result = path.resolve(page.dirPath,page.manifest.template);
         }else{
-            return path.resolve(this.dirsMap.viewDir,"template","std-react.html");
+            result = path.resolve(this.dirsMap.viewDir,"template","std-react.pug");
         }
+        if(path.extname(result) == ".pug"){
+            result = "!!pug-loader!" + result;
+        }
+        return result;
     }
     private getEntryPath(page:IPage):string
     {
@@ -57,15 +64,16 @@ export default class PageDataCompleter{
 export interface IPerfectPageData{
     dirPath:string;
     dirName:string;
-    manifest:IPerfectManifest;
+    manifest:IPerfectPageConfig;
 }
-export interface IPerfectManifest{
-    renderer:string;
+export interface IPerfectPageConfig{
+    template:string;
     
     entry_name:string;
     entry_path:string;
     output:string;
 
+    ext_data:any;
     title:string,
     desc:string,
     icon:string;

@@ -2,7 +2,6 @@ import { IDirectoriesMap } from "../directories-map";
 import IPage from './IPage'
 import fs from 'fs';
 import path from 'path';
-import { tmpdir } from "os";
 import libloader from '../libloader'
 export default class PagesScanner{
     constructor(private dirsMap:IDirectoriesMap){}
@@ -19,12 +18,12 @@ export default class PagesScanner{
         fs.readdirSync(scanDir)
         .filter(e=>fs.statSync(path.resolve(scanDir,e)).isDirectory())
         .filter(dir=>{
-           return fs.existsSync(path.resolve(scanDir,dir,"manifest.ts"));
+           return fs.existsSync(path.resolve(scanDir,dir,"page.config.ts"));
         })
         .forEach(dir=>{
             let tmp:IPage = {
                 dirPath : path.resolve(scanDir,dir),
-                manifest : libloader(path.resolve(scanDir,dir,"manifest.ts")).default
+                manifest : libloader(path.resolve(scanDir,dir,"page.config.ts")).default
             }
             result.push(tmp);
         });
