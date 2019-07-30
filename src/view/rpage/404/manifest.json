@@ -1,8 +1,0 @@
-{
-    "template":"std-react",
-    "entry":"index.tsx",
-    "output":"404.html",
-
-    "title":"404 NOT FOUND!",
-    "desc":"404 NOT FOUND!"
-}

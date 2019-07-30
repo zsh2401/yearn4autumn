@@ -1,68 +1,31 @@
 import webpack = require("webpack");
 import { IDirectoriesMap } from "../directories-map";
-import { ManifestScanner } from "./ManifestScanner";
-import { ManifestReader } from "./ManifestReader";
-import { IManifest } from "./Manifest";
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import * as consts from './Constant';
-import libloader from '../libloader'
+import PagesScanner from  "./PagesScanner";
+import EntryBuilder from "./EntryBuilder";
+import PluginBuilder from "./PluginsBuilder";
+import path from 'path';
+import PageDataCompleter, { IPerfectPageData } from "./PageDataCompleter";
 export class BuildHelper{
-    private scanner:ManifestScanner;
-    private reader:ManifestReader;
-    private cache:Array<IManifest>;
+    private pagesScanner:PagesScanner;
+    private cache:Array<IPerfectPageData>;
     constructor(private dirsMap:IDirectoriesMap){
-        this.scanner = new ManifestScanner(dirsMap);
-        this.reader = new ManifestReader(dirsMap);
+        this.pagesScanner = new PagesScanner(dirsMap);
     }
     load()
     {
-        let pageDirs = this.scanner.scan();
-        console.log(pageDirs);
-        this.cache = new Array<IManifest>();
-        for(let i in pageDirs){
-            try{
-                this.cache.push(this.reader.read(pageDirs[i]));
-            }catch(err){
-                console.log(err);
-            }
-        }
+        this.cache = new PageDataCompleter(this.dirsMap,this.pagesScanner.scan()).getResult();
+        console.log(this.cache);
     }   
     get Entry():webpack.Entry
     {
-        let tmp = {};
-        this.cache.forEach(manifest=>{
-            tmp[manifest.entry_name] = manifest.entry;
-        })
-        return tmp;
+        return new EntryBuilder(this.dirsMap,this.cache).build();
     }
-    get PagePlugins():Array<webpack.Plugin>{
-        let tmp = new Array<webpack.Plugin>();
-        this.cache.forEach(manifest=>{
-            let _template = manifest.template;
-            if(_template.endsWith(".pug")){
-                _template = "!!pug-loader!" + _template;
-            };
-            let compile_data = null
-            if(manifest.data_provider){
-                compile_data = libloader(manifest.data_provider).default;
-            }
-            let config:HtmlWebpackPlugin.Options={
-                filename:manifest.output,
-                template:_template,
-                title:manifest.title,
-                favicon:manifest.icon,
-                meta:
-                {
-                    "description":manifest.desc
-                },
-                data:compile_data,
-                notice:consts.notice,
-                xhtml:true,
-                hash:true,
-                chunks:["site",manifest.entry_name]
-            };
-            tmp.push(new HtmlWebpackPlugin(config));
-        })
-        return tmp;
+    get PagePlugins():Array<webpack.Plugin>
+    {
+        return new PluginBuilder(this.dirsMap,this.cache).build();
     }
+}
+export function getLastDir(fullPath:string):string{  //当前目录路径（字符串）
+    let index = fullPath.split(path.sep).join('/').lastIndexOf("\/");  //兼容两个平台 并获取最后位置index
+    return fullPath.substring(index + 1, fullPath.length); //截取获得结果
 }

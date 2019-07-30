@@ -11,6 +11,7 @@ export interface IDirectoriesMap
     fpagesDir:string;
     rpagesDir:string;
     npagesDir:string;
+    viewDir:string;
 }
 export default class DirectoriesMap implements IDirectoriesMap{
     public get rootDir():string{

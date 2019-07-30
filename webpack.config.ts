@@ -64,7 +64,7 @@ const config: webpack.Configuration =  {
             },
             { test: /CNAME$/, use: 'file-loader?name=/CNAME' },
             { test: /\.pug$/, loader: 'pug-loader' },
-            { test: /\.ejs$/, loader: 'ejs-loader' },
+            // { test: /\.ejs$/, loader: 'ejs-loader' },
             // { test: /\.js|jsx$/, loader: 'babel-loader' },
         ]
       }
