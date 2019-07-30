@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from './Container';
 import RootContainer from './RootContainer';
-export default class StdApp extends React.Component
+export default class PlainApp extends React.Component
 {
     render(){
         let cst = {

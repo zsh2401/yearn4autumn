@@ -1,7 +1,22 @@
 import React from 'react';
+import {Menu,PageHeader} from 'antd';
+import SubMenu from 'antd/lib/menu/SubMenu';
 export default class NavBar extends React.Component
 {
     render(){
+        return (
+            <Menu mode="horizontal">
+            <Menu.Item onClick={function(){window.location.href = '/fun'}}>库</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/discover'}}>发现</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/donate'}}>捐赠</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+        </Menu>
+      )
+    }
+    renderX(){
         let cst = {
             margin:"0px",
             padding: "0px",
@@ -29,19 +44,19 @@ export default class NavBar extends React.Component
                             </a>
                         </li>
                         <li>
-                            <a href="/fun/">
+                            <a href="/discover/">
                                 <span className="glyphicon glyphicon-paperclip"></span>
                                 <span> 发现</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/fun/">
+                            <a href="/donate/">
                                 <span className="glyphicon glyphicon-heart-empty"></span>
                                 <span> 捐赠</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/fun/">
+                            <a href="/about/">
                                 <span className="glyphicon glyphicon-link"></span>
                                 <span> 关于</span>
                             </a>
@@ -52,3 +67,4 @@ export default class NavBar extends React.Component
         </nav>)
     }
 }
+

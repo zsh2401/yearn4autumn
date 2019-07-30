@@ -3,7 +3,6 @@ import path from 'path';
 import * as buildv2 from "./src/common/buildV2";
 import DirectoriesMap from './src/common/directories-map';
 
-
 const dirsMap = new DirectoriesMap(__dirname);
 const helper:buildv2.BuildHelper = new buildv2.BuildHelper(dirsMap);
 helper.load();
@@ -34,8 +33,14 @@ const config: webpack.Configuration =  {
         extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:plugins,
+    externals:{
+        'antd':'antd',
+        'react':'React',
+        'react-dom':"ReactDOM",
+        'valine':'Valine',
+        'leancloud-storage':'AV'
+    },
     module: {
-
         rules: [
             { test: /\.css$/, use: [
                 {

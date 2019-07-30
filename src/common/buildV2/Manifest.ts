@@ -9,4 +9,10 @@ export interface IManifest
     title:string,
     desc:string,
     icon?:string;
+    data_provider?:string;
+}
+export interface IFunManifest extends IManifest
+{
+    ext_hide?:boolean;
+    ext_name:string;
 }

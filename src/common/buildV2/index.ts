@@ -5,6 +5,7 @@ import { ManifestReader } from "./ManifestReader";
 import { IManifest } from "./Manifest";
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as consts from './Constant';
+import libloader from '../libloader'
 export class BuildHelper{
     private scanner:ManifestScanner;
     private reader:ManifestReader;
@@ -41,6 +42,10 @@ export class BuildHelper{
             if(_template.endsWith(".pug")){
                 _template = "!!pug-loader!" + _template;
             };
+            let compile_data = null
+            if(manifest.data_provider){
+                compile_data = libloader(manifest.data_provider).default;
+            }
             let config:HtmlWebpackPlugin.Options={
                 filename:manifest.output,
                 template:_template,
@@ -50,6 +55,7 @@ export class BuildHelper{
                 {
                     "description":manifest.desc
                 },
+                data:compile_data,
                 notice:consts.notice,
                 xhtml:true,
                 hash:true,

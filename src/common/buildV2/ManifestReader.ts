@@ -11,6 +11,15 @@ export class ManifestReader{
         let result = this.convertToAbsoluteManifest(dirName,pageDir,completed);
         return result;
     }
+    readAll(pageDirs:string[]):Array<IManifest>{
+        let result = [];
+        pageDirs.forEach(dir=>{
+            try{
+                result.push(this.read(dir));
+            }catch{}
+        })
+        return result;
+    }
     private readRawManifest(_path:string):IManifest{
         let jsonText =  fs.readFileSync(path.resolve(_path,"manifest.json"),"utf-8");
         return JSON.parse(jsonText) as IManifest;
@@ -25,6 +34,7 @@ export class ManifestReader{
             title:"未命名",
             icon:path.resolve(this.dirsMap.assestsDir,"favicon.ico"),
             desc:"慕秋-多功能响应式网站",
+            data_provider:null,
         }
         for(let key in raw)
         {
@@ -42,6 +52,9 @@ export class ManifestReader{
             manifest.template = path.resolve(this.dirsMap.srcDir,"view","template","std-react.pug")
         else
             manifest.template = path.resolve(dirPath,manifest.template);
+        if(manifest.data_provider != null){
+            manifest.data_provider = path.resolve(dirPath,manifest.data_provider);
+        }
         return manifest;
     }
 }

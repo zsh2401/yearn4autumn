@@ -1,0 +1,9 @@
+{
+    "template":"std-react",
+    "entry":"index.tsx",
+    "output":"/fun/index.html",
+
+    "title":"库-慕秋",
+    "desc":"库-慕秋",
+    "data_provider":"data-provider.ts"
+} 

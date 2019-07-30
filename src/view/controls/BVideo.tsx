@@ -19,10 +19,8 @@ export default class BVideo extends React.Component<IBVideoProps,IBVideoState>{
         });
     }
     resetSize(){
-        console.log("resizing");
         let newVideoW =  document.getElementById("vContainer").offsetWidth * 1;
         let newVideoH = newVideoW * 0.66;
-        console.log(newVideoW + "x" + newVideoH);
         this.setState({
             width:newVideoW + "px",
             height: newVideoH + "px"

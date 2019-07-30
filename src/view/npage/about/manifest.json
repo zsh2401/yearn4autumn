@@ -1,0 +1,8 @@
+{
+    "template":"std-react",
+    "entry":"index.tsx",
+    "output":"/about/index.html",
+
+    "title":"关于慕秋",
+    "desc":"关于慕秋"
+} 
