@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/zsh2401/fond_of_autumn#readme",
   "dependencies": {
+    "antd": "^3.20.7",
     "compress.js": "^1.1.2",
     "jquery": "^3.4.1",
     "jsnes": "^1.1.0",

@@ -1,7 +1,7 @@
 import fs from 'fs'
 export interface IManifest
 {
-    template:string | "std-react" | "std-pug";
+    template:string | "std-react" | "std-app";
     entry_name:string;
     entry:string;
     output:string;

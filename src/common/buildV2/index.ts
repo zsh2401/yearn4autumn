@@ -1,5 +1,5 @@
 import webpack = require("webpack");
-import { IDirectoriesMap } from "../build/directories-map";
+import { IDirectoriesMap } from "../directories-map";
 import { ManifestScanner } from "./ManifestScanner";
 import { ManifestReader } from "./ManifestReader";
 import { IManifest } from "./Manifest";

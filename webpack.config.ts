@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import * as buildv2 from "./src/common/buildV2";
-import { DirectoriesMap } from './src/common/build/directories-map';
+import DirectoriesMap from './src/common/directories-map';
 
 
 const dirsMap = new DirectoriesMap(__dirname);
@@ -11,11 +11,9 @@ const plugins = helper.PagePlugins
 const entry = helper.Entry;
 
 entry["site"] = path.resolve(dirsMap.commonDir,"site");
-entry["vcomment"] = path.resolve(dirsMap.commonDir,"vcomment");
 
 plugins[plugins.length] = new webpack.DefinePlugin({
-    '__projRootDir':JSON.stringify(__dirname),
-    "REACT_PAGE":JSON.stringify(path.resolve(dirsMap.commonDir,"hpug","react.pug")),
+    '__projRootDir':JSON.stringify(__dirname)
 });
 
 const config: webpack.Configuration =  {

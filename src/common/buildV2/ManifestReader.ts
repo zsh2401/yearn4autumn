@@ -1,6 +1,6 @@
 import { IManifest } from "./Manifest";
-import path, { dirname } from 'path';
-import { IDirectoriesMap } from "../build/directories-map";
+import path from 'path';
+import { IDirectoriesMap } from "../directories-map";
 import fs from "fs";
 export class ManifestReader{
     constructor(private dirsMap:IDirectoriesMap){}
@@ -38,13 +38,10 @@ export class ManifestReader{
         if(!fs.existsSync(manifest.icon)){
             manifest.icon = path.resolve(dirPath,manifest.icon);
         }
-        if(manifest.template === "std-react")
+        if(manifest.template === "std-react" || manifest.template === "std-app")
             manifest.template = path.resolve(this.dirsMap.srcDir,"view","template","std-react.pug")
-        else if(manifest.template === "std-pug")
-            manifest.template = path.resolve(this.dirsMap.commonDir,"hpug","body.pug")
         else
             manifest.template = path.resolve(dirPath,manifest.template);
-        console.log(manifest);
         return manifest;
     }
 }

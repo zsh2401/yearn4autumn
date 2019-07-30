@@ -1,4 +1,4 @@
-import { IDirectoriesMap } from "../build/directories-map";
+import { IDirectoriesMap } from "../directories-map";
 import path from 'path'
 import glob from 'glob';
 import fs from 'fs';
