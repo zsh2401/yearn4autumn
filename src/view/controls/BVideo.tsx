@@ -13,6 +13,10 @@ export default class BVideo extends React.Component<IBVideoProps,IBVideoState>{
     }
     componentDidMount(){
         this.resetSize();
+        let that = this;
+        window.addEventListener("resize",()=>{
+            that.resetSize();
+        });
     }
     resetSize(){
         console.log("resizing");
@@ -26,7 +30,7 @@ export default class BVideo extends React.Component<IBVideoProps,IBVideoState>{
     }
     render(){
         //@ts-ignore
-        return (<div id="vContainer" style={{padding:"20px"}}><iframe src={this.props.src} style={{width:this.state.width,height:this.state.height}} scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+        return (<div id="vContainer" style={{padding:"0px"}}><iframe src={this.props.src} style={{width:this.state.width,height:this.state.height}} scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
             </iframe>
         </div>
         )
