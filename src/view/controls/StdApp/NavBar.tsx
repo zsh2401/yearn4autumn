@@ -1,11 +1,10 @@
 import React from 'react';
 import {Menu,PageHeader} from 'antd';
-import SubMenu from 'antd/lib/menu/SubMenu';
 export default class NavBar extends React.Component
 {
-    render(){
+    renderX(){
         return (
-            <Menu mode="horizontal">
+        <Menu mode="horizontal">
             <Menu.Item onClick={function(){window.location.href = '/fun'}}>库</Menu.Item>
             <Menu.Item onClick={function(){window.location.href = '/discover'}}>发现</Menu.Item>
             <Menu.Item onClick={function(){window.location.href = '/donate'}}>捐赠</Menu.Item>
@@ -16,7 +15,7 @@ export default class NavBar extends React.Component
         </Menu>
       )
     }
-    renderX(){
+    render(){
         let cst = {
             margin:"0px",
             padding: "0px",
@@ -36,7 +35,7 @@ export default class NavBar extends React.Component
                     </a>
                 </div>
                 <div id="navbar-c" className="collapse navbar-collapse">
-                    <ul className="nav navbar-nav navbar-left">
+                    <ul className="nav navbar-nav navbar-right">
                         <li>
                             <a href="/fun/">
                                 <span className="glyphicon glyphicon-th-large"></span>

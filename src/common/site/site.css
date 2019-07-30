@@ -7,19 +7,10 @@
     padding: 0px;
 }
 body{
+    margin-top: 50px;
     background-color: whitesmoke;
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
     height:100px;
-}
-footer{
-    padding:1px;
-    margin:0px;
-}
-#main-footer{
-    padding-left:30px;
-    max-width:600px;
-    margin-left:auto;
-    margin-right:auto;
 }

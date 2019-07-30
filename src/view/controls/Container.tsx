@@ -1,7 +1,6 @@
 import React from 'react';
-export default class Container extends React.Component{
-    render()
-    {
-        return <div id="main-container" className="container">{this.props.children}</div>
+export default class Cotainer extends React.Component{
+    render(){
+        return <div className='container' style={{background:'white'}}>{this.props.children}</div>
     }
 }

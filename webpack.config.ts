@@ -38,7 +38,8 @@ const config: webpack.Configuration =  {
         'react':'React',
         'react-dom':"ReactDOM",
         'valine':'Valine',
-        'leancloud-storage':'AV'
+        'leancloud-storage':'AV',
+        // "react-bootstrap":"RBS"
     },
     module: {
         rules: [

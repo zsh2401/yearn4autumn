@@ -2,11 +2,13 @@
     background-image: url('./headbg.jpg');
     margin: 0;
     width: 100%;
-    color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
 }
-#stitle{
-    color:whitesmoke;
+.header h1{
+    color: white;
+}
+.header h5{
+    color: white;
 }

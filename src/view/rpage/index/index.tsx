@@ -1,19 +1,19 @@
-import PlainApp from '../../controls/PlainApp';
+require("./app.css");
 import React from 'react';
 import ReactDOM from 'react-dom'
-import NavBar from '../../controls/NavBar';
-import Header from './Header';
-import Notice from '../../controls/Notice';
-import Footer from '../../controls/Footer';
 import Container from '../../controls/Container';
 import ValineComment from '../../controls/ValineComment';
-require("./app.css");
+import PlainApp from '../../controls/PlainApp';
+import Notice from '../../controls/Notice';
+import TitleScreen from './TitlteScreen';
+import NavBar from '../../controls/StdApp/NavBar';
+import Footer from '../../controls/StdApp/Footer';
 class App extends React.Component{
     render(){
         return(
             <PlainApp>
                 <NavBar></NavBar>
-                <Header></Header>
+                <TitleScreen></TitleScreen>
                 <Container>
                     <Notice></Notice>
                     <h1>Hello Index!</h1>
