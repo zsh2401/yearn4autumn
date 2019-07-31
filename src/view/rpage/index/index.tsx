@@ -1,7 +1,6 @@
 require("./app.css");
 import React from 'react';
 import ReactDOM from 'react-dom'
-import Container from '../../controls/Container';
 import ValineComment from '../../controls/ValineComment';
 import PlainApp from '../../controls/PlainApp';
 import Notice from '../../controls/Notice';
@@ -14,12 +13,12 @@ class App extends React.Component{
             <PlainApp>
                 <NavBar></NavBar>
                 <TitleScreen></TitleScreen>
-                <Container>
+                <div className="container">
                     <Notice></Notice>
                     <h1>Hello Index!</h1>
                     <ValineComment></ValineComment>
-                    <Footer></Footer>
-                </Container>
+                </div>
+                <Footer></Footer>
             </PlainApp>)
     }
 }
