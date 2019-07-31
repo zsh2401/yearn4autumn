@@ -22,6 +22,9 @@ export default class Footer extends React.Component{
                         <li className="nav-item">
                             <a className="nav-link" href="/about">关于</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/404.html">404</a>
+                        </li>
                     </ul>
                     <div className="d-flex">
                         <div className="p-3">
