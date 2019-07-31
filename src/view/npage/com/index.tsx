@@ -4,7 +4,7 @@ import StdApp from '../../controls/StdApp'
 class App extends React.Component{
     render(){
         return <StdApp>
-            <h1>About Y4A.FUN!</h1>
+            <h1>与Y4A.FUN进行商务合作</h1>
         </StdApp>
     }
 }

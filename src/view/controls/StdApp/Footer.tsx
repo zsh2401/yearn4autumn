@@ -11,16 +11,16 @@ export default class Footer extends React.Component{
                 <div className="container">
                     <ul className="nav">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Github</a>
+                            <a className="nav-link" href="https://github.com/zsh2401/yearn4autumn">Github</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">酷安</a>
+                            <a className="nav-link" href="https://zsh2401.top">开发者博客</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">商务合作</a>
+                            <a className="nav-link" href="/com">商务合作</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">关于</a>
+                            <a className="nav-link" href="/about">关于</a>
                         </li>
                     </ul>
                     <div className="d-flex">
