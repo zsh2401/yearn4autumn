@@ -38,7 +38,7 @@ export default class PageDataCompleter{
         if(page.manifest.template){
             result = path.resolve(page.dirPath,page.manifest.template);
         }else{
-            result = path.resolve(this.dirsMap.viewDir,"template","std-react.pug");
+            result = path.resolve(this.dirsMap.viewDir,"template","StdAppPage.tsx");
         }
         if(path.extname(result) == ".pug"){
             result = "!!pug-loader!" + result;

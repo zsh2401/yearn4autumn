@@ -18,7 +18,7 @@ export default class PluginBuilder{
                 hash:true,
                 xhtml:true,
                 title:page.manifest.title,
-                data:page.manifest.ext_data,
+                ext_data:page.manifest.ext_data,
                 meta:{
                     "description":page.manifest.desc
                 }

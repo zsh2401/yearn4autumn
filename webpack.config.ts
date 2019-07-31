@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import path from 'path';
 import * as buildv2 from "./src/common/buildV2";
 import DirectoriesMap from './src/common/directories-map';
-
 const dirsMap = new DirectoriesMap(__dirname);
 const helper:buildv2.BuildHelper = new buildv2.BuildHelper(dirsMap);
 helper.load();
@@ -23,12 +22,19 @@ const config: webpack.Configuration =  {
         publicPath: '/'
     },
     mode:'production',
+    resolveLoader: {
+        modules: [
+          'node_modules',
+          path.resolve(__dirname, "src","common")
+        ]
+    },
     resolve: {
         alias:{
             pinfo: path.resolve( __dirname,"info.js"),
             hejs: path.resolve( __dirname,'src', 'common', 'hejs'),
             hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
-            pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts'),
+            pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts')
+            // "tsx-loader": path.resolve(__dirname, "src","common","tsx-loader")
         },
         extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
@@ -63,7 +69,7 @@ const config: webpack.Configuration =  {
                 }
             },
             { test: /CNAME$/, use: 'file-loader?name=/CNAME' },
-            { test: /\.pug$/, loader: 'pug-loader' },
+            // { test: /\.pug$/, use: ['pug-loader'] },
             // { test: /\.ejs$/, loader: 'ejs-loader' },
             // { test: /\.js|jsx$/, loader: 'babel-loader' },
         ]
