@@ -1,5 +1,4 @@
 import React from 'react';
-import { Layout} from 'antd';
 import Footer from './Footer';
 import Container from '../Container';
 import NavBar from './NavBar';

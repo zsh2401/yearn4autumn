@@ -1,21 +1,62 @@
 import React from 'react';
-import {Menu,PageHeader} from 'antd';
 export default class NavBar extends React.Component
 {
-    renderX(){
-        return (
-        <Menu mode="horizontal">
-            <Menu.Item onClick={function(){window.location.href = '/fun'}}>库</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/discover'}}>发现</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/donate'}}>捐赠</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
-            <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
-        </Menu>
-      )
+    // renderX(){
+    //     return (
+    //     <Menu mode="horizontal">
+    //         <Menu.Item onClick={function(){window.location.href = '/fun'}}>库</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/discover'}}>发现</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/donate'}}>捐赠</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+    //         <Menu.Item onClick={function(){window.location.href = '/about'}}>关于</Menu.Item>
+    //     </Menu>
+    //   )
+    // }
+    readonly brandStyle ={
+        padding:'0px',
+        height:'40px'
     }
     render(){
+        return (<nav className="navbar navbar-expand-sm navbar-light bg-light fixed-top" >
+        <div className="container">
+            <a className="navbar-brand" style={this.brandStyle} href="/">
+                <img style={{maxHeight:'40px'}} src={require('../../../assests/brand.png')}></img>
+            </a> 
+
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".targetMenu">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse targetMenu">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a className="nav-link" href="/fstore">F-Store</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/fav">库</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/comment">留言板</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div className="collapse navbar-collapse justify-content-end targetMenu">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a className="nav-link" href="/donate">捐赠</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/about">关于</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>)
+    }
+    renderXX(){
         let cst = {
             margin:"0px",
             padding: "0px",

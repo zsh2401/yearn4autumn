@@ -9,7 +9,7 @@ export default class TitleScreen extends React.Component{
             <br/>
             <div className="btn-group">
                 <button className="btn btn-success">开始使用</button>
-                <button className="btn">浏览源代码</button>
+                <button className="btn btn-light">浏览源代码</button>
             </div>
             </p>
         </div>);
