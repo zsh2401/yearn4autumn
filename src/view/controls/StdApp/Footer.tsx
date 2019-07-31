@@ -1,5 +1,6 @@
 import React from 'react';
 import CNZZ from './CNZZ';
+declare const compileDate:string;
 export default class Footer extends React.Component{
     readonly footerStyle = {
         fontSize:"14px",
@@ -32,10 +33,12 @@ export default class Footer extends React.Component{
                     </div>
                     <div className="d-flex .justify-content-sm-center">
                         <div className="p-3">
-                        Love you,Yin <br/>
-                        Copyright © 2019 - 2020 zsh2401,All Rights Reserved
-                        <br/>
-                        <CNZZ></CNZZ>
+                            Love you,Yin <br/>
+                            Copyright © 2019 - 2020 zsh2401,All Rights Reserved
+                            <br/>
+                            编译时间: {compileDate}
+                            <br/>
+                            <CNZZ></CNZZ>
                         </div>
                     </div>
                     <br/>

@@ -19,7 +19,7 @@ export default class PluginBuilder{
                 xhtml:true,
                 title:page.manifest.title,
                 ext_data:page.manifest.ext_data,
-                compileTime:new Date(),
+                compileDate:new Date(),
                 meta:{
                     "description":page.manifest.desc
                 }

@@ -4,16 +4,11 @@ export interface StdPageProps{
     compileData:any;
 }
 export class StdPage extends React.Component<StdPageProps>{
-    getScriptContent():any{
-        return "var wtf = 'b'"
-    }
-    componentDidMount(){
-        this.addScript(this.getScriptContent());
-    }
-    addScript(jsText){
-        let eleScript = document.createElement('script');
-        eleScript.innerHTML = jsText;
-        document.getElementsByTagName("head")[0].appendChild(eleScript);
+    private createMarkup(){
+        return {__html: 
+            'const ext_data = ' + JSON.stringify(this.props.compileData.ext_data) + 
+            ";const compileDate = " + JSON.stringify(this.props.compileData.compileDate)
+        };
     }
     render(){
         return (<html>
@@ -44,6 +39,7 @@ export class StdPage extends React.Component<StdPageProps>{
             <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
             <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+            <script dangerouslySetInnerHTML={this.createMarkup()}></script>
             <body>
                 {this.props.children}
             </body>
