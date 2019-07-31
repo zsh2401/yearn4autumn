@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import StdApp from "../../controls/StdApp"
 import BVideo from '../../controls/BVideo'
+declare const ext_data : any;
 class App extends React.Component{
     render(){
         return (
@@ -12,3 +13,4 @@ class App extends React.Component{
     }
 }
 ReactDOM.render(<App></App>,document.querySelector("#app"));
+console.log(ext_data);

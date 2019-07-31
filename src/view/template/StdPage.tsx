@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 export interface StdPageProps{
-    title:string;
-    extraData:any;
+    compileData:any;
 }
 export class StdPage extends React.Component<StdPageProps>{
+    getScriptContent():any{
+        return "var wtf = 'b'"
+    }
+    componentDidMount(){
+        this.addScript(this.getScriptContent());
+    }
+    addScript(jsText){
+        let eleScript = document.createElement('script');
+        eleScript.innerHTML = jsText;
+        document.getElementsByTagName("head")[0].appendChild(eleScript);
+    }
     render(){
         return (<html>
-            <title>{this.props.title}</title>
+            <title>{this.props.compileData.title}</title>
             <meta charSet='utf-8'></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             {/* 前置库 */}
@@ -33,9 +43,7 @@ export class StdPage extends React.Component<StdPageProps>{
             {/* bootstrap 4 */}
             <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
             <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <script>
-                var ext_data = {JSON.stringify(this.props.extraData)}
-            </script>
+
             <body>
                 {this.props.children}
             </body>
@@ -44,5 +52,5 @@ export class StdPage extends React.Component<StdPageProps>{
 }
 export default function(data)
 {
-    return ReactDOM.renderToString(<StdPage title={data.htmlWebpackPlugin.options.title} extraData={data.htmlWebpackPlugin.options.ext_data}></StdPage>);
+    return ReactDOM.renderToString(<StdPage compileData={data.htmlWebpackPlugin.options}></StdPage>);
 }

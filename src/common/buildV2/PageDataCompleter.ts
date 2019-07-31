@@ -27,7 +27,7 @@ export default class PageDataCompleter{
             entry_path: this.getEntryPath(page),
             output:page.manifest.output,
 
-            ext_data:page.manifest.ext_data || {},
+            ext_data:page.manifest.ext_data || {"t":"there is nothing"},
             title:page.manifest.title || "未标题",
             desc:page.manifest.desc || "慕秋,什么都有",
             icon:this.getIconPath(page)
