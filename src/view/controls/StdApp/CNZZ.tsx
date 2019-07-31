@@ -9,8 +9,8 @@ export default class CNZZ extends React.Component{
     }
     render(){
         return (
-        <p id="fuck" className="text-center">
+        <div id="fuck">
             <span id='cnzz_stat_icon_1277812477'></span>
-        </p>)
+        </div>)
     }
 }

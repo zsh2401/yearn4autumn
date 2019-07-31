@@ -7,6 +7,7 @@ import Notice from '../../controls/Notice';
 import TitleScreen from './TitlteScreen';
 import NavBar from '../../controls/StdApp/NavBar';
 import Footer from '../../controls/StdApp/Footer';
+import SplitLine from '../../controls/StdApp/SplitLine';
 class App extends React.Component{
     render(){
         return(
@@ -18,6 +19,7 @@ class App extends React.Component{
                     <h1>Hello Index!</h1>
                     <ValineComment></ValineComment>
                 </div>
+                <SplitLine></SplitLine>
                 <Footer></Footer>
             </PlainApp>)
     }

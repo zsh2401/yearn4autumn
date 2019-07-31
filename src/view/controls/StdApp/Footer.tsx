@@ -1,31 +1,45 @@
 import React from 'react';
 import CNZZ from './CNZZ';
 export default class Footer extends React.Component{
+    readonly footerStyle = {
+        fontSize:"14px",
+    }
     render(){
         return(
-            <footer className="bg-light">
+            <footer style={this.footerStyle}>
                 <div className="container">
+                    <ul className="nav">
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Github</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">酷安</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">商务合作</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">关于</a>
+                        </li>
+                    </ul>
                     <div className="d-flex">
-                        <div className="p-2">
-                            <p>联系</p>
-                            <p>zsh2401@163.com</p>
-                            <p>群:468029710</p>
+                        <div className="p-3">
+                            E-Mail: zsh2401@163.com
                         </div>
-                        <div className="p-2">
-                            <p>开放源代码</p>
-                            <a href="https://github.com/zsh2401/yearn4autumn">y4a@Github</a>
-                        </div>
-                        <div className="p-2">
-                            <p>友情链接</p>
-                            <a href="ttps://zsh2401.top">2401的晚秋咖啡</a><br></br>
-                            <a href="ttps://atmb.top">秋之盒</a>
+                        <div className="p-3">
+                            QQ群: 468029710
                         </div>
                     </div>
-                    <p className="text-center">Love you,Yin</p>
-                    <p className="text-center">Copyright © 2019 - 2020 zsh2401,All Rights Reserved</p>
-                    <CNZZ></CNZZ>
+                    <div className="d-flex .justify-content-sm-center">
+                        <div className="p-3">
+                        Love you,Yin <br/>
+                        Copyright © 2019 - 2020 zsh2401,All Rights Reserved
+                        <br/>
+                        <CNZZ></CNZZ>
+                        </div>
+                    </div>
                     <br/>
-                    </div>
+                </div>
             </footer>)
     }
 }

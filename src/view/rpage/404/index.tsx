@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import StdApp from "../../controls/StdApp"
 import BVideo from '../../controls/BVideo'
-// var x = require('!!pug-loader!../../template/std-react.pug')({htmlWebpackPlugin:{options:{title:"nice"}}});
-// console.log(x);
 class App extends React.Component{
     render(){
         return (
