@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button,ButtonGroup} from 'react-bootstrap';
 export default class TitleScreen extends React.Component{
     render(){
         return (
@@ -8,10 +7,10 @@ export default class TitleScreen extends React.Component{
             <h5 className="text-center">yearn4autumn</h5>
             <p className="text-center">
             <br/>
-            <ButtonGroup>
-                <Button variant="success">开始使用</Button>
-                <Button>浏览源代码</Button>
-            </ButtonGroup>
+            <div className="btn-group">
+                <button className="btn btn-success">开始使用</button>
+                <button className="btn">浏览源代码</button>
+            </div>
             </p>
         </div>);
     }
