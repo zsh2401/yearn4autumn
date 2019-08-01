@@ -24,6 +24,9 @@ export class BuildHelper{
     {
         return new PluginBuilder(this.dirsMap,this.cache).build();
     }
+    get Cache(){
+        return this.cache;
+    }
 }
 export function getLastDir(fullPath:string):string{  //当前目录路径（字符串）
     let index = fullPath.split(path.sep).join('/').lastIndexOf("\/");  //兼容两个平台 并获取最后位置index

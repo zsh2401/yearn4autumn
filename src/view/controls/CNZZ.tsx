@@ -1,5 +1,5 @@
 import React from 'react';
-export default class CNZZ extends React.Component{
+export class CNZZ extends React.Component{
     componentDidMount(){
         let cnzzC = document.querySelector("#fuck");
         let eleScript = document.createElement('script');

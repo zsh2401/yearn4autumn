@@ -4,7 +4,7 @@ import AV from 'leancloud-storage'
 export interface IVCommentProps{
     path?:string | undefined;
 }
-export default class ValineComment extends React.Component<IVCommentProps>{
+export  class ValineComment extends React.Component<IVCommentProps>{
     componentDidMount(){
         new Valine({
                 av: AV, 

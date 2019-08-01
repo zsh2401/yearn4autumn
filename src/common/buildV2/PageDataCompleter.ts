@@ -30,15 +30,23 @@ export default class PageDataCompleter{
             ext_data:page.manifest.ext_data || {"t":"there is nothing"},
             title:page.manifest.title || "未标题",
             desc:page.manifest.desc || "慕秋,什么都有",
-            icon:this.getIconPath(page)
+            icon:this.getIconPath(page),
+            fun:page.manifest.f_id == null?null:this.getFunConfigOf(page), 
         };
+    }
+    private getFunConfigOf(page:IPage):IFunPageConfig{
+        return {
+            id: page.manifest.f_id,
+            hide: page.manifest.f_hide || false,
+            name: page.manifest.f_name || "未命名"
+        }
     }
     private getTamplatePath(page:IPage):string{
         let result = null;
         if(page.manifest.template){
             result = path.resolve(page.dirPath,page.manifest.template);
         }else{
-            result = path.resolve(this.dirsMap.viewDir,"template","StdAppPage.tsx");
+            result = path.resolve(this.dirsMap.viewDir,"app","rendering","StdAppPage.tsx");
         }
         if(path.extname(result) == ".pug"){
             result = "!!pug-loader!" + result;
@@ -57,7 +65,7 @@ export default class PageDataCompleter{
         if(page.manifest.icon){
             return path.resolve(page.dirPath,page.manifest.icon);
         }else{
-            return path.resolve(this.dirsMap.assestsDir,"favicon.ico");
+            return path.resolve(this.dirsMap.assestsDir,"root","favicon.ico");
         }
     }
 }
@@ -77,4 +85,11 @@ export interface IPerfectPageConfig{
     title:string,
     desc:string,
     icon:string;
+
+    fun?:IFunPageConfig;
+}
+export interface IFunPageConfig{
+    hide:boolean;
+    id:string;
+    name:string;
 }

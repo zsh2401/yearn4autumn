@@ -6,7 +6,7 @@ export interface IBVideoState{
     width:string;
     height:string;
 }
-export default class BVideo extends React.Component<IBVideoProps,IBVideoState>{
+export class BVideo extends React.Component<IBVideoProps,IBVideoState>{
     readonly state:IBVideoState = {
         width:"0px",
         height:"0px"

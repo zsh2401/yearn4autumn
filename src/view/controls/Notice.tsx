@@ -1,6 +1,6 @@
 import React from 'react';
 const notice = require("../../data/notice.json");
-export default class Notice extends React.Component{
+export class Notice extends React.Component{
     render()
     {
         if(notice.enable){

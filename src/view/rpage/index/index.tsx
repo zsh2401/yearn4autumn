@@ -1,27 +1,23 @@
 require("./app.css");
 import React from 'react';
 import ReactDOM from 'react-dom'
-import ValineComment from '../../controls/ValineComment';
-import PlainApp from '../../controls/PlainApp';
-import Notice from '../../controls/Notice';
-import TitleScreen from './TitlteScreen';
-import NavBar from '../../controls/StdApp/NavBar';
-import Footer from '../../controls/StdApp/Footer';
-import SplitLine from '../../controls/StdApp/SplitLine';
+import {StdApp} from '../../app';
+require('./index.css');
 class App extends React.Component{
     render(){
         return(
-            <PlainApp>
-                <NavBar></NavBar>
-                <TitleScreen></TitleScreen>
-                <div className="container">
-                    <Notice></Notice>
-                    <h1>Hello Index!</h1>
-                    <ValineComment></ValineComment>
-                </div>
-                <SplitLine></SplitLine>
-                <Footer></Footer>
-            </PlainApp>)
+            <StdApp enableNoticeComponent={false}>
+                    <div className="jumbotron text-center title-screen">
+                        <h1>慕秋</h1>
+                        <h3>Y4A.FUN</h3>
+                        <br/><br/><br/>
+                        <div className="btn-group">
+                            <button className="btn btn-success">立刻上手-></button>
+                            <button className="btn btn-secondary">添加到桌面</button>
+                        </div>
+                    </div>
+                    {/* <ValineComment></ValineComment> */}
+            </StdApp>)
     }
 }
 ReactDOM.render(<App></App>,document.querySelector("#app"))

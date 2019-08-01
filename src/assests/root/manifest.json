@@ -1,0 +1,12 @@
+{
+    "short_name": "慕秋",
+    "name": "慕秋-瑞士军刀",
+    "icon": [
+        {
+            "src": "leaf.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        }
+    ],
+    "start_url": "/index.html"
+}

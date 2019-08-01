@@ -4,6 +4,6 @@ import {StdPage} from './StdPage';
 export default function(data){
     return ReactDOM.renderToString(
     <StdPage compileData={data.htmlWebpackPlugin.options}>
-        <div id="app" className="bg-light" style={{minHeight:'100vh'}}></div>
+        <div id="app" style={{minHeight:'100vh'}}></div>
     </StdPage>);
 }

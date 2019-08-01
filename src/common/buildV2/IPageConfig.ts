@@ -11,9 +11,8 @@ export default interface IPageConfig
     icon?:string;
 
     ext_data?:any;
-}
-export interface IFunPageConfig extends IPageConfig
-{
+
+    f_id?:string;
     f_hide?:boolean;
-    f_name:string;
+    f_name?:string;
 }

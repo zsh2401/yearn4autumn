@@ -2,17 +2,25 @@ import webpack from 'webpack';
 import path from 'path';
 import * as buildv2 from "./src/common/buildV2";
 import DirectoriesMap from './src/common/directories-map';
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 const dirsMap = new DirectoriesMap(__dirname);
 const helper:buildv2.BuildHelper = new buildv2.BuildHelper(dirsMap);
 helper.load();
-const plugins = helper.PagePlugins
-const entry = helper.Entry;
+let plugins = helper.PagePlugins
+let entry = helper.Entry;
 
 entry["site"] = path.resolve(dirsMap.commonDir,"site");
 
-plugins[plugins.length] = new webpack.DefinePlugin({
-    '__projRootDir':JSON.stringify(__dirname)
-});
+plugins = plugins.concat([
+    new webpack.DefinePlugin({
+        '__PROJ_ROOT_DIR':JSON.stringify(__dirname),
+        "__ALL_PAGE_DATA":JSON.stringify(helper.Cache),
+        "__COMPILED_DATE":JSON.stringify(new Date)
+    }),
+    new CopyWebpackPlugin([
+        {from:path.resolve(dirsMap.assestsDir,"root"),to:dirsMap.outputDir}
+    ])
+]);
 
 const config: webpack.Configuration =  {
     entry:entry,
@@ -67,11 +75,7 @@ const config: webpack.Configuration =  {
                 use: {
                         loader:'url-loader?name=assests/rom/[name].[ext]'
                 }
-            },
-            { test: /CNAME$/, use: 'file-loader?name=/CNAME' },
-            // { test: /\.pug$/, use: ['pug-loader'] },
-            // { test: /\.ejs$/, loader: 'ejs-loader' },
-            // { test: /\.js|jsx$/, loader: 'babel-loader' },
+            }
         ]
       }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import StdApp from '../../controls/StdApp'
+import {StdApp} from '../../app'
 class App extends React.Component{
     render(){
         return <StdApp>

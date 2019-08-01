@@ -6,7 +6,7 @@ export interface StdPageProps{
 export class StdPage extends React.Component<StdPageProps>{
     private createMarkup(){
         return {__html: 
-            'const ext_data = ' + JSON.stringify(this.props.compileData.ext_data) + 
+            'const __EXT_DATA = ' + JSON.stringify(this.props.compileData.ext_data) + 
             ";const compileDate = " + JSON.stringify(this.props.compileData.compileDate)
         };
     }
@@ -14,6 +14,7 @@ export class StdPage extends React.Component<StdPageProps>{
         return (<html>
             <title>{this.props.compileData.title}</title>
             <meta charSet='utf-8'></meta>
+            <link rel="manifest" href="/manifest.json"></link>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             {/* 前置库 */}
             <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>

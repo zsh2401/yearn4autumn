@@ -1,7 +1,8 @@
 import React from 'react';
-import CNZZ from './CNZZ';
-declare const compileDate:string;
-export default class Footer extends React.Component{
+import {CNZZ} from './';
+import * as dm from '../../common/data-manager'
+import { ScriptTag } from './ScriptTag';
+export class Footer extends React.Component{
     readonly footerStyle = {
         fontSize:"14px",
     }
@@ -39,9 +40,9 @@ export default class Footer extends React.Component{
                             Love you,Yin <br/>
                             Copyright © 2019 - 2020 zsh2401,All Rights Reserved
                             <br/>
-                            编译时间: {compileDate}
+                            编译时间: {dm.getCompileDate()}
                             <br/>
-                            <CNZZ></CNZZ>
+                            <ScriptTag type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277812477'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277812477%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</ScriptTag>
                         </div>
                     </div>
                     <br/>
