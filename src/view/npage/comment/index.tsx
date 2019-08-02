@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import {StdApp} from '../../app'
-import {ValineComment} from '../../controls'
+import {AppLayout,ValineComment} from '../../controls'
 class App extends React.Component{
     render(){
-        return <StdApp>
+        return <AppLayout>
             <h1>Comment Y4A.FUN!</h1>
             <ValineComment path="comment"></ValineComment>
-        </StdApp>
+        </AppLayout>
     }
 }
 ReactDOM.render(<App></App>,document.querySelector("#app"))

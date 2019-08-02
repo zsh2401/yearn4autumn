@@ -1,4 +1,4 @@
-import IPageConfig from '../../../common/buildV2/IPageConfig'
+import IPageConfig from "../../../building/buildV2/IPageConfig";
 let data:IPageConfig = {
     entry_path:"index.tsx",
     output:"404.html",

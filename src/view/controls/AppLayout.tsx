@@ -1,9 +1,10 @@
 import React from 'react';
-import {Notice,Footer,NavBar,SplitLine} from '../../controls';
-export interface StdAppProps{
+import {Notice,Footer,NavBar,SplitLine} from '.';
+export interface AppLayoutProps{
     enableNoticeComponent?:boolean;
+    type?:"plain" | "std";
 }
-export class StdApp extends React.Component<StdAppProps>{
+export class AppLayout extends React.Component<AppLayoutProps>{
     readonly containerStyle={
         padding:'10px',
     }
@@ -11,6 +12,18 @@ export class StdApp extends React.Component<StdAppProps>{
         backgroundColor:'white'
     }
     render(){
+        switch(this.props.type){
+            case "plain":
+                return this.renderPlain();
+            case "std":
+            default:
+                return this.renderStd();
+        }
+    }
+    private renderPlain(){
+        return <div>{this.props.children}</div>
+    }
+    private renderStd(){
         return (<div>
             <NavBar></NavBar>
             <SplitLine></SplitLine>

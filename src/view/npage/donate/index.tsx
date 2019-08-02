@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import {StdApp} from '../../app'
+import {AppLayout,ValineComment} from '../../controls'
 class App extends React.Component{
     render(){
-        return <StdApp>
+        return <AppLayout>
             <h1>Donate Y4A.FUN!</h1>
-        </StdApp>
+        </AppLayout>
     }
 }
 ReactDOM.render(<App></App>,document.querySelector("#app"))

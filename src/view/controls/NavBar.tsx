@@ -19,7 +19,7 @@ export class NavBar extends React.Component
             <div className="collapse navbar-collapse targetMenu">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="/fstore">F-Store</a>
+                        <a className="nav-link" href="/fstore">Fun商店</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/fav">库</a>

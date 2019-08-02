@@ -1,7 +1,6 @@
 import React from 'react';
 import {CNZZ} from './';
-import * as dm from '../../common/data-manager'
-import { ScriptTag } from './ScriptTag';
+import dm from '../../common/data-manager'
 export class Footer extends React.Component{
     readonly footerStyle = {
         fontSize:"14px",
@@ -42,7 +41,8 @@ export class Footer extends React.Component{
                             <br/>
                             编译时间: {dm.getCompileDate()}
                             <br/>
-                            <ScriptTag type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277812477'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277812477%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</ScriptTag>
+                            <CNZZ></CNZZ>
+                            {/* <ScriptTag type="text/javascript">console.log('tst'); document.write(unescape("%3Cspan id='cnzz_stat_icon_1277812477'%3E%3C/span%3E%3Cscript src='//s23.cnzz.com/z_stat.php%3Fid%3D1277812477%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</ScriptTag> */}
                         </div>
                     </div>
                     <br/>

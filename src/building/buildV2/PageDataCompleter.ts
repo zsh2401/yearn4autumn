@@ -1,7 +1,7 @@
 import { IDirectoriesMap } from "../directories-map";
 import IPage from "./IPage";
 import IManifest  from "./IPageConfig";
-import * as index from '.'
+import BuildV2 from '.'
 import path from 'path'
 import fs from 'fs';
 export default class PageDataCompleter{
@@ -15,7 +15,7 @@ export default class PageDataCompleter{
     }
     private covertToPerfectPage(page:IPage):IPerfectPageData{
         return {
-            dirName:index.getLastDir(page.dirPath),
+            dirName:BuildV2.getLastDir(page.dirPath),
             dirPath:page.dirPath,
             manifest:this.getPerfectManifestOf(page)
         }
@@ -23,7 +23,7 @@ export default class PageDataCompleter{
     private getPerfectManifestOf(page:IPage):IPerfectPageConfig{
         return {
             template : this.getTamplatePath(page),
-            entry_name: page.manifest.entry_name ||  "___entry_of_" + index.getLastDir(page.dirPath),
+            entry_name: page.manifest.entry_name ||  "___entry_of_" + BuildV2.getLastDir(page.dirPath),
             entry_path: this.getEntryPath(page),
             output:page.manifest.output,
 
@@ -46,7 +46,7 @@ export default class PageDataCompleter{
         if(page.manifest.template){
             result = path.resolve(page.dirPath,page.manifest.template);
         }else{
-            result = path.resolve(this.dirsMap.viewDir,"app","rendering","StdAppPage.tsx");
+            result = path.resolve(this.dirsMap.viewDir,"app","compiling","StdAppPage.tsx");
         }
         if(path.extname(result) == ".pug"){
             result = "!!pug-loader!" + result;

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { ReactText } from 'react'
 export interface ScriptTagProps{
     src?:string;
     async?:any;
     charset?:string;
     type?:string;
+    id?:string;
 }
 export class ScriptTag extends React.Component<ScriptTagProps>
 {
@@ -17,20 +18,22 @@ export class ScriptTag extends React.Component<ScriptTagProps>
         let parent = placeholder.parentElement;
 
         let eleScript:HTMLScriptElement = document.createElement('script');
-        eleScript.type = "text/javascript";
-        eleScript.innerHTML = this.props.children;
-
-        if(this.props.type)
-            eleScript.src = this.props.src;
-        if(this.props.type)
-            eleScript.type = this.props.type;
-        if(this.props.async)
-            eleScript.async = true;
-        if(this.props.charset)
-            eleScript.charset = this.props.charset;
         
         parent.insertBefore(eleScript,placeholder);
         parent.removeChild(placeholder);
+        if(this.props.id)
+            eleScript.id = this.props.id;
+       
+        if(this.props.type)
+            eleScript.type = this.props.type;
+        if(this.props.async)
+            eleScript.async = this.props.async;
+        if(this.props.charset)
+            eleScript.charset = this.props.charset;
+        if(this.props.src)
+            eleScript.src = this.props.src;
+        if(this.props.children)
+            eleScript.innerHTML = (this.props.children as string);
     }
     private generateId(){
         return "__" + S4();
