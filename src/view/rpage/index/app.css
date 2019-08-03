@@ -1,14 +1,8 @@
-.header{
+#header{
     background-image: url('./headbg.jpg');
     margin: 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
-}
-.header h1{
-    color: white;
-}
-.header h5{
-    color: white;
 }
