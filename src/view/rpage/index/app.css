@@ -1,8 +1,11 @@
 #header{
-    background-image: url('./headbg.jpg');
+    background-image: url('./headbg2.jpeg');
     margin: 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
+}
+.text-in-white{
+    color:white;
 }
