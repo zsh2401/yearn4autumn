@@ -1,13 +1,14 @@
 import React from 'react';
 import {CNZZ} from './';
-import dm from '../../common/data-manager'
+import * as dm from '../../common/data-manager'
 export class Footer extends React.Component{
-    readonly footerStyle = {
+    readonly style = {
         fontSize:"14px",
+        flex: '0 0 auto'
     }
     render(){
         return(
-            <footer style={this.footerStyle}>
+            <footer className="bg-light" style={this.style}>
                 <div className="container">
                     <ul className="nav">
                         <li className="nav-item">

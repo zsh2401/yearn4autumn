@@ -4,9 +4,9 @@
 还在开发中
 
 # 技术栈
+* node.js
 * webpack
-* TypeScript
+* typescript
 * bootstrap
 * react.js
 * antd
-

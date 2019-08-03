@@ -7,11 +7,5 @@
     padding: 0px;
 }
 body{
-    background: whitesmoke;
-    position: absolute;
-    margin-top: 56px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    min-height:100vh;
+    height:100%;
 }

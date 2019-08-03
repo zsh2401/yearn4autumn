@@ -2,20 +2,17 @@ import {IPerfectPageData} from '../../building/buildV2/PageDataCompleter';
 declare const __ALL_PAGE_DATA:Array<IPerfectPageData>;
 declare const __EXT_DATA:any;
 declare const __COMPILED_DATE:string;
-export default DataManager;
-module DataManager{
-    export function getExtData()
-    {
+export function getExtData()
+{
         return __EXT_DATA;
-    }
-    export function getCompileDate()
-    {
+}
+export function getCompileDate()
+{
         return __COMPILED_DATE;
-    }
-    export function getALLPages():Array<IPerfectPageData>{
+}
+export function getALLPages():Array<IPerfectPageData>{
         return __ALL_PAGE_DATA;
-    }
-    export function getGlobalNotice(){
+}
+export function getGlobalNotice(){
         return require('./notice.json');
-    }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-const notice = require("../../data/notice.json");
+const notice = require("../../common/data-manager/notice.json");
 export class Notice extends React.Component{
     render()
     {

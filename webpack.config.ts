@@ -1,11 +1,11 @@
 import webpack from 'webpack';
 import path from 'path';
-import BuildV2 from "./src/building/buildV2";
-console.log(BuildV2);
+import Build from "./src/building/buildV2";
+console.log(Build);
 import DirectoriesMap from './src/building/directories-map';
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 const dirsMap = new DirectoriesMap(__dirname);
-const helper:BuildV2.BuildHelper = new BuildV2.BuildHelper(dirsMap);
+const helper:Build = new Build(dirsMap);
 helper.load();
 let plugins = helper.PagePlugins
 let entry = helper.Entry;
