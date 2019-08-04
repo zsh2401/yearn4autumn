@@ -1,4 +1,4 @@
-import {IPageConfig} from "../../../building/buildV2";
+import {IPageConfig} from "../../../building/core";
 
 let config:IPageConfig = {
     entry_path:"index.tsx",

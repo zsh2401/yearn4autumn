@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
-import Build from "./src/building/buildV2";
+import Build from "./src/building/core";
 console.log(Build);
 import DirectoriesMap from './src/building/directories-map';
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -15,11 +15,12 @@ entry["site"] = path.resolve(dirsMap.commonDir,"site");
 plugins = plugins.concat([
     new webpack.DefinePlugin({
         '__PROJ_ROOT_DIR':JSON.stringify(__dirname),
-        "__ALL_PAGE_DATA":JSON.stringify(helper.Cache),
+        "__ALL_FUN_PAGE_DATA":JSON.stringify(helper.SimpifiedData),
         "__COMPILED_DATE":JSON.stringify(new Date)
     }),
     new CopyWebpackPlugin([
-        {from:path.resolve(dirsMap.assestsDir,"root"),to:dirsMap.outputDir}
+        {from:path.resolve(dirsMap.assestsDir,"root"),to:dirsMap.outputDir},
+        {from:path.resolve(dirsMap.assestsDir,"f_icons"),to:path.resolve(dirsMap.outputDir,"images/f_icons/")}
     ])
 ]);
 
@@ -40,8 +41,6 @@ const config: webpack.Configuration =  {
     resolve: {
         alias:{
             pinfo: path.resolve( __dirname,"info.js"),
-            hejs: path.resolve( __dirname,'src', 'common', 'hejs'),
-            hpug: path.resolve( __dirname,'src', 'common', 'hpug'),
             pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts')
             // "tsx-loader": path.resolve(__dirname, "src","common","tsx-loader")
         },

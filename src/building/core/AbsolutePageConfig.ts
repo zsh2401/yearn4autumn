@@ -15,7 +15,6 @@ export default class AbsolutePageConfig implements IPageConfig{
         return result;
     }
     
-
     get entry_name():string{
         return "___THE_ENTRY_OF_" + this.dirName; 
     }
@@ -46,13 +45,6 @@ export default class AbsolutePageConfig implements IPageConfig{
             return this.rawConfig.desc;
         }else{
             return "慕秋-你的全能工具箱";
-        }
-    }
-    get icon():string{
-        if(this.rawConfig.icon){
-            return this.rawConfig.icon;
-        }else{
-            return path.resolve(this.dirsMap.assestsDir,"root","favicon.ico");
         }
     }
 

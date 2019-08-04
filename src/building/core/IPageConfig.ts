@@ -8,10 +8,9 @@ export interface IPageConfig
 
     title?:string,
     desc?:string,
-    icon?:string;
 
     ext_data?:any;
-
+    
     id?:string;
     hide?:boolean;
     name?:string;
