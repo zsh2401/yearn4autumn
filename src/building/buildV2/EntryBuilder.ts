@@ -1,15 +1,14 @@
-import { IDirectoriesMap } from "../directories-map";
 import webpack from 'webpack';
-import { IPerfectPageData } from "./PageDataCompleter";
-export default class EntryBuilder{
-    constructor(private dirsMap:IDirectoriesMap,private pages:Array<IPerfectPageData>)
+import {IPageConfig} from "./";
+export class EntryBuilder{
+    constructor(private config:Array<IPageConfig>)
     {
     }
     build():webpack.Entry
     {
         let tmp = {};
-        this.pages.forEach(page=>{
-            tmp[page.manifest.entry_name] = page.manifest.entry_path;
+        this.config.forEach(crt=>{
+            tmp[crt.entry_name] = crt.entry_path;
         })
         return tmp;
     }

@@ -1,11 +1,13 @@
 require("./app.css");
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {AppLayout, SplitLine,TransparentNavBar} from '../../controls';
+import {AppLayout,TransparentNavBar} from '../../controls';
 import sentence from '../../../common/sentence'
 import {DoubleCol} from './DoubleCol'
+
 class App extends React.Component{
     render(){
+        console.log('abcd');
         return(
             <AppLayout type="fluid" enableNavBar={false} enableNotice={false}>
                 <Header></Header>

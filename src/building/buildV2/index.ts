@@ -1,28 +1,38 @@
 import webpack = require("webpack");
 import { IDirectoriesMap } from "../directories-map";
-import PagesScanner from  "./PagesScanner";
-import EntryBuilder from "./EntryBuilder";
-import PluginBuilder from "./PluginsBuilder";
+import {PagesScanner} from  "./PagesScanner";
+import {EntryBuilder} from "./EntryBuilder";
+import {PluginBuilder} from "./PluginsBuilder";
+import AbsolutePageConfig from './AbsolutePageConfig'
 import path from 'path';
-import PageDataCompleter, { IPerfectPageData } from "./PageDataCompleter";
+import {IPageConfig} from "./IPageConfig";
+export * from './EntryBuilder';
+export * from './IPage'
+export * from './IPageConfig'
+export * from './PagesScanner'
+export * from './AbsolutePageConfig'
+export * from './PluginsBuilder'
+export * from './Constant'
 export default class BuildHelper{
     private pagesScanner:PagesScanner;
-    private cache:Array<IPerfectPageData>;
+    private cache:Array<IPageConfig>;
     constructor(private dirsMap:IDirectoriesMap){
         this.pagesScanner = new PagesScanner(dirsMap);
     }
     load()
     {
-        this.cache = new PageDataCompleter(this.dirsMap,this.pagesScanner.scan()).getResult();
-        console.log(this.cache);
+        this.cache = [];
+        this.pagesScanner.scan().forEach(e=>{
+            this.cache.push(new AbsolutePageConfig(e.dirPath,e.config,this.dirsMap))
+        });
     }   
     get Entry():webpack.Entry
     {
-        return new EntryBuilder(this.dirsMap,this.cache).build();
+        return new EntryBuilder(this.cache).build();
     }
     get PagePlugins():Array<webpack.Plugin>
     {
-        return new PluginBuilder(this.dirsMap,this.cache).build();
+        return new PluginBuilder(this.cache).build();
     }
     get Cache(){
         return this.cache;

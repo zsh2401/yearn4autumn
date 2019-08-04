@@ -1,9 +1,9 @@
 import { IDirectoriesMap } from "../directories-map";
-import IPage from './IPage'
+import {IPage} from './'
 import fs from 'fs';
 import path from 'path';
 import libloader from '../libloader'
-export default class PagesScanner{
+export class PagesScanner{
     constructor(private dirsMap:IDirectoriesMap){}
     scan():Array<IPage>
     {
@@ -23,7 +23,7 @@ export default class PagesScanner{
         .forEach(dir=>{
             let tmp:IPage = {
                 dirPath : path.resolve(scanDir,dir),
-                manifest : libloader(path.resolve(scanDir,dir,"page.config.ts")).default
+                config : libloader(path.resolve(scanDir,dir,"page.config.ts")).default
             }
             result.push(tmp);
         });

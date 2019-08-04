@@ -1,27 +1,26 @@
-import { IDirectoriesMap } from "../directories-map";
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { IPerfectPageData } from "./PageDataCompleter";
-export default class PluginBuilder{
-    constructor(private dirsMap:IDirectoriesMap,private pages:Array<IPerfectPageData>)
+import {IPageConfig} from "./";
+export class PluginBuilder{
+    constructor(private configs:Array<IPageConfig>)
     {
     }
     build():Array<webpack.Plugin>
     {
         let tmp = [];
-        this.pages.forEach(page=>{
+        this.configs.forEach(config=>{
             let options:HtmlWebpackPlugin.Options = {
-                filename: page.manifest.output,
-                template:page.manifest.template,
-                chunks:["site",page.manifest.entry_name],
-                favicon:page.manifest.icon,
+                filename: config.output,
+                template:config.template,
+                chunks:["site",config.entry_name],
+                favicon:config.icon,
                 hash:true,
                 xhtml:true,
-                title:page.manifest.title,
-                ext_data:page.manifest.ext_data,
+                title:config.title,
+                ext_data:config.ext_data,
                 compileDate:new Date(),
                 meta:{
-                    "description":page.manifest.desc
+                    "description":config.desc
                 }
             }
             tmp.push(new HtmlWebpackPlugin(options));

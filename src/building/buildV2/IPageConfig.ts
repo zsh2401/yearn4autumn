@@ -1,4 +1,4 @@
-export default interface IPageConfig
+export interface IPageConfig
 {
     template?:string;
     
@@ -12,7 +12,7 @@ export default interface IPageConfig
 
     ext_data?:any;
 
-    f_id?:string;
-    f_hide?:boolean;
-    f_name?:string;
+    id?:string;
+    hide?:boolean;
+    name?:string;
 }

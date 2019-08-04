@@ -1,6 +1,5 @@
-import IPageConfig  from "./IPageConfig";
-
-export default interface IPage{
+import {IPageConfig}  from "./";
+export interface IPage{
     dirPath:string;
-    manifest:IPageConfig;
+    config:IPageConfig;
 }
