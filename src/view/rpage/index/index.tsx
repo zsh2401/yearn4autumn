@@ -1,9 +1,8 @@
 require("./app.css");
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {AppLayout, SplitLine} from '../../controls';
+import {AppLayout, SplitLine,TransparentNavBar} from '../../controls';
 import sentence from '../../../common/sentence'
-import { IndexNavBar } from './IndexNavBar';
 import {DoubleCol} from './DoubleCol'
 class App extends React.Component{
     render(){
@@ -52,7 +51,7 @@ class Header extends React.Component<any,IHeaderState>{
     }
     render(){
         return <div className="header">
-            <IndexNavBar></IndexNavBar>
+            <TransparentNavBar></TransparentNavBar>
             <div className="jumbotron container" style={{background:'transparent'}}>
                 <h1 className="text-white"><b>Yearn For Autumn</b></h1>
                 <h3 className="text-white">你的全能工具箱</h3>

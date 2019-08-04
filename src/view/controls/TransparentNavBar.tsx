@@ -1,5 +1,5 @@
 import React from 'react';
-export class IndexNavBar extends React.Component
+export class TransparentNavBar extends React.Component
 {
     render(){
         return (<nav className="navbar navbar-expand-sm navbar-dark" style={{background:'transparent'}}>
