@@ -20,7 +20,7 @@ export class AppLayout extends React.Component<AppLayoutProps>{
     }
 
     private doRender(){
-        return <this.AppOuter>
+        return <this.AppOuter paddingTop={this.getOuterPaddingTop()}>
             <this.NavBarIfEnable enable={this.props.enableNavBar}></this.NavBarIfEnable>
             <this.AppContainer type={this.props.type}>
                 <this.NoticeIfEnable enable={this.props.enableNotice}></this.NoticeIfEnable>
@@ -29,10 +29,17 @@ export class AppLayout extends React.Component<AppLayoutProps>{
             <Footer flex="0 0 auto"></Footer>
         </this.AppOuter>
     }
+    private getOuterPaddingTop():string{
+        if(this.props.enableNavBar || this.props.enableNavBar == null){
+            return "50px"
+        }else{
+            return "0px";
+        }
+    }
     private AppOuter(props){
         return (<div style={{
             height:'100%',
-            paddingTop:'50px',
+            paddingTop: props.paddingTop,
             backgroundColor:'white',
             display: 'flex',
             flexDirection: "column"}}>
