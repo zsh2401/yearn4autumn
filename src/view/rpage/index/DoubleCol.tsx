@@ -18,9 +18,9 @@ export class DoubleCol extends React.Component<IDoubleColProps>{
         maxWidth:'100%'
     }
     render(){
-        return <div className="row" style={this.rowStyle}>
-                {this.getPart()}
-                {this.getPart()}
+        return <div>
+            {this.getPCPart()}
+            {this.getMobilePart()}
         </div>
     }
     private gotLeft:boolean = false;
@@ -37,5 +37,21 @@ export class DoubleCol extends React.Component<IDoubleColProps>{
     }
     private getContentPart():ReactElement{
         return <div className="col-md-6 col-sm-12 align-self-center">{this.props.children}</div>;
+    }
+    private getPCPart():ReactElement{
+        return <div className="d-none d-md-block">
+            <div className="row" style={this.rowStyle}>
+                {this.getPart()}
+                {this.getPart()}
+            </div>
+        </div>
+    }
+    private getMobilePart():ReactElement{
+       return <div className="d-sm-none">
+            <div className="row" style={this.rowStyle}>
+                <div className="col-md-6 col-sm-12 align-self-center">{this.props.children}</div>
+                <div className="col-md-6 col-sm-12 align-self-center"><img src={this.props.pictureSrc}  style={this.imgStyle} className="img-responsive d-block mx-auto"></img></div>
+            </div>
+        </div>
     }
 }
