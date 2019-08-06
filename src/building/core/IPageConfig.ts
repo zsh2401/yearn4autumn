@@ -1,17 +1,24 @@
 export interface IPageConfig
 {
-    template?:string;
-    
-    entry_name?:string;
-    entry_path:string;
-    output:string;
+    type:"root" | "normal" | "fun";
+    name:string;
 
-    title?:string,
-    desc?:string,
+    template?:string | "std-react";
+    entry?:string;
 
-    ext_data?:any;
-    
-    id?:string;
+    extraData?:any;
+
+    pageTitle:string;
+    pageDescription?:string;
+}
+export interface IRootPageConfig extends IPageConfig
+{
+}
+export interface INormalPageConfig extends IPageConfig
+{
+}
+export interface IFunPageConfig extends IPageConfig{
     hide?:boolean;
-    name?:string;
+    name:string;
+    auth:string;
 }
