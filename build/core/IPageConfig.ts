@@ -3,7 +3,7 @@ export interface IPageConfig
     type:"root" | "normal" | "fun";
     name:string;
 
-    template?:string | "std-react";
+    template?:string | "std-app";
     entry?:string;
 
     extraData?:any;

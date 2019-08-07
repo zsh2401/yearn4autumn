@@ -6,8 +6,7 @@ export interface StdPageProps{
 export class StdPage extends React.Component<StdPageProps>{
     private createMarkup(){
         return {__html: 
-            'const __EXT_DATA = ' + JSON.stringify(this.props.compileData.ext_data) + 
-            ";const compileDate = " + JSON.stringify(this.props.compileData.compileDate)
+            'const __EXT_DATA = ' + JSON.stringify(this.props.compileData.extraData)
         };
     }
     render(){

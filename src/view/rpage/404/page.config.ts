@@ -1,8 +1,9 @@
-import {IPageConfig} from "../../../building/core";
+import {IPageConfig} from "../../../../build/core";
 let data:IPageConfig = {
-    entry_path:"index.tsx",
-    output:"404.html",
-    title:"404 NOT FOUND",
-    ext_data : {a:"b"},
+    entry:"index.tsx",
+    name:"404",
+    type:"root",
+    pageTitle:"404 NOT FOUND",
+    extraData : {a:"b"},
 }
 module.exports = data;

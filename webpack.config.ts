@@ -1,21 +1,20 @@
 import webpack from 'webpack';
 import path from 'path';
-import Build from "./src/building/core";
-console.log(Build);
-import DirectoriesMap from './src/building/directories-map';
+import * as bc from "./build/core";
+import DirectoriesMap from './build/directories-map';
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 const dirsMap = new DirectoriesMap(__dirname);
-const helper:Build = new Build(dirsMap);
-helper.load();
-let plugins = helper.PagePlugins
-let entry = helper.Entry;
+bc.loadDirsMap(dirsMap);
+const helper:bc.IBuildCore = bc.createBuildCore();
+let plugins = helper.getPlugins();
+let entry = helper.getEntry();
 
 entry["site"] = path.resolve(dirsMap.commonDir,"site");
 
 plugins = plugins.concat([
     new webpack.DefinePlugin({
         '__PROJ_ROOT_DIR':JSON.stringify(__dirname),
-        "__ALL_FUN_PAGE_DATA":JSON.stringify(helper.SimpifiedData),
+        "__ALL_FUN_PAGE_DATA":JSON.stringify(helper.getAllFPageInfo()),
         "__COMPILED_DATE":JSON.stringify(new Date)
     }),
     new CopyWebpackPlugin([
@@ -31,7 +30,7 @@ const config: webpack.Configuration =  {
         filename:"js/[name].js",
         publicPath: '/'
     },
-    mode:'production',
+    mode:'development',
     resolveLoader: {
         modules: [
           'node_modules',

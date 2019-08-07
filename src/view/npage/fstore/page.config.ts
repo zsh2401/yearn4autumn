@@ -1,10 +1,11 @@
-import {IPageConfig} from "../../../building/core";
+import {IPageConfig} from "../../../../build/core";
 
 let config:IPageConfig = {
-    entry_path:"index.tsx",
-    output:"/fstore/index.html",
+    type:"normal",
+    entry:"index.tsx",
+    name:"fstore",
 
-    title:"F-Store 慕秋",
-    desc:"慕秋应用商店"
+    pageTitle:"F-Store 慕秋",
+    pageDescription:"慕秋应用商店"
 }
 export default config;

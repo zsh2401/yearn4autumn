@@ -1,10 +1,11 @@
-import {IPageConfig} from "../../../building/core";
+import {IPageConfig} from "../../../../build/core";
 
 let config:IPageConfig = {
-    entry_path:"index.tsx",
-    output:"/about/index.html",
+    type:"normal",
+    name:"about",
+    entry:"index.tsx",
 
-    title:"关于慕秋",
-    desc:"关于慕秋"
+    pageTitle:"关于慕秋",
+    pageDescription:"关于慕秋"
 }
 export default config;

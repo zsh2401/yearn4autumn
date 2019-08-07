@@ -1,4 +1,4 @@
-import sleep from 'system-sleep';
+import deasync from 'deasync';
 export default function load(path:string):any{
     let result = null;
     let err = null;
@@ -10,7 +10,7 @@ export default function load(path:string):any{
     })
     console.log("loading " + path);
     while(result == null && err == null){
-        sleep(50);
+        deasync.sleep(50);
     }
     console.log("loaded");
     if(result)

@@ -5,7 +5,7 @@
       "allowJs": true,
       "esModuleInterop": true,
       "jsx": "react",
-      "strictNullChecks": true
+      "strictNullChecks": false
     },
     "include": [
       "./src/common/*/*.ts",

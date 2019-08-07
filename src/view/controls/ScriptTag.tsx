@@ -14,8 +14,8 @@ export class ScriptTag extends React.Component<ScriptTagProps>
         this.placeHolderId = this.generateId();
     }
     componentDidMount(){
-        let placeholder = document.querySelector("#" + this.placeHolderId);
-        let parent = placeholder.parentElement;
+        let placeholder = document.querySelector("#" + this.placeHolderId) as Element;
+        let parent = placeholder.parentElement as Element;
 
         let eleScript:HTMLScriptElement = document.createElement('script');
         

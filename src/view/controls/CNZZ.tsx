@@ -1,9 +1,9 @@
 import React from 'react';
 export class CNZZ extends React.Component{
     componentDidMount(){
-        let cnzzC = document.querySelector("#fuck");
+        let cnzzC = document.querySelector("#fuck") as Element;
         let eleScript = document.createElement('script');
-        eleScript.src = "http://s23.cnzz.com/z_stat.php?id=1277812477&show=pic";
+        eleScript.src = "//s23.cnzz.com/z_stat.php?id=1277812477&show=pic";
         eleScript.type = "text/javascript";
         cnzzC.appendChild(eleScript);
     }

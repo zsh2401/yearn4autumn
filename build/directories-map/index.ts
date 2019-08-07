@@ -21,7 +21,7 @@ export default class DirectoriesMap implements IDirectoriesMap{
         return path.resolve(this.srcDir,"view");
     }
     public get outputDir():string{
-        return  path.resolve(this.rootDir,"dist");
+        return  path.resolve(this.rootDir,"_dist_");
     }
     public get srcDir():string{
         return  path.resolve(this.rootDir,"src");
