@@ -8,6 +8,7 @@ export default class AppRouter extends React.Component{
         <Router>
             <Route exact path="/" component={Index}></Route>
             <Route path="/about" component={About}></Route>
+            
         </Router>
         )
     }

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BVideo,ScriptTag,AppLayout} from "../../controls"
-import * as dm from '../../../common/data-manager'
 class App extends React.Component{
     render(){
         return (
