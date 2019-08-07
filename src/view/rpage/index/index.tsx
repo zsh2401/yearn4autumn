@@ -7,7 +7,7 @@ import {DoubleCol} from './DoubleCol'
 
 class App extends React.Component{
     render(){
-        console.log('abcd');
+        console.log('abcdefg');
         return(
             <AppLayout type="fluid" enableNavBar={false} enableNotice={false}>
                 <Header></Header>

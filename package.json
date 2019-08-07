@@ -5,8 +5,9 @@
   "scripts": {
     "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "webpack-dev-server",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack"
+    "build": "webpack --config webpack.config.prod.ts",
+    "buildx": "webpack --config webpack.config.dev.ts",
+    "server": "webpack-dev-server --inline --progress --port 8001 --config webpack.config.dev.ts"
   },
   "repository": {
     "type": "git",
