@@ -4,7 +4,7 @@ import OfflinePlugin from 'offline-plugin';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 const config: webpack.Configuration =  {
-    entry:{"__INDEX_ENTRY__" :"./src/index_entry.tsx"},
+    entry:{"__INDEX_ENTRY__" :"./src/app.tsx"},
     output: {
         path :  path.resolve(__dirname,"_dist_"),
         filename:"js/[name].js",
@@ -22,16 +22,16 @@ const config: webpack.Configuration =  {
     plugins:[
         new HtmlWebpackPlugin({
             filename:"index.html",
-            template:"./src/index.html",
+            template:"./src/app.html",
             chunks:["__INDEX_ENTRY__"]
         })
     ],
     externals:{
         'antd':'antd',
-        // 'react':'React',
-        // 'react-dom':"ReactDOM",
-        // 'react-router':"react-router",
-        // 'react-router-dom':"react-router-dom",
+        'react':'React',
+        'react-dom':"ReactDOM",
+        'react-router':"react-router",
+        'react-router-dom':"react-router-dom",
         'valine':'Valine',
         'leancloud-storage':'AV',
     },
