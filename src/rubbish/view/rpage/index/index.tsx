@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import {AppLayout,TransparentNavBar} from '../../controls';
 import sentence from '../../../common/sentence'
 import {DoubleCol} from './DoubleCol'
-
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+OfflinePluginRuntime.applyUpdate();
 class App extends React.Component{
     render(){
         console.log('abcdefg');

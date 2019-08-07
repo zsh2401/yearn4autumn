@@ -13,8 +13,8 @@ export class StdPage extends React.Component<StdPageProps>{
         return (<html>
             <title>{this.props.compileData.title}</title>
             <meta charSet='utf-8'></meta>
-            <link rel="manifest" href="/manifest.json"></link>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <link rel="manifest" href="/manifest.json"></link>
             {/* 前置库 */}
             <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
             <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
