@@ -4,6 +4,7 @@ import OfflinePlugin from 'offline-plugin';
 import ManifestPlugin from 'webpack-pwa-manifest'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
+import { version } from 'react-dom';
 const config: webpack.Configuration =  {
     entry:{"app" :"./src/app.tsx"},
     output: {
@@ -13,11 +14,7 @@ const config: webpack.Configuration =  {
     },
     mode:'development',
     resolve: {
-        alias:{
-            pinfo: path.resolve( __dirname,"info.js"),
-            pagescanner: path.resolve( __dirname,'tools', 'src', 'pages-scanner.ts')
-            // "tsx-loader": path.resolve(__dirname, "src","common","tsx-loader")
-        },
+        alias:{},
         extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:[
@@ -40,7 +37,7 @@ const config: webpack.Configuration =  {
             {
                 src: path.resolve('./src/assests/root/leaf.png'),
                 sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-            }
+            },
         ]
         }),
         new webpack.DefinePlugin({
