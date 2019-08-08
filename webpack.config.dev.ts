@@ -14,7 +14,6 @@ const config: webpack.Configuration =  {
     },
     mode:'development',
     resolve: {
-        alias:{},
         extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:[
@@ -32,13 +31,13 @@ const config: webpack.Configuration =  {
             short_name: '慕秋',
             description: '多功能PWA',
             background_color: '#3C8CE7',
+            theme_color: "#3C8CE7",
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
             {
                 src: path.resolve('./src/assests/root/leaf.png'),
                 sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-            },
-        ]
+            }]
         }),
         new webpack.DefinePlugin({
             "__COMPILED_DATE":JSON.stringify(new Date())
