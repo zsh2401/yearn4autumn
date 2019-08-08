@@ -1,14 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import About from "./pages/About";
+import { BrowserRouter as Router, Route,Link, Switch } from "react-router-dom";
+import Home from "./pages/home";
+import P404 from "./pages/404";
 export default class AppRouter extends React.Component{
     render(){
         return (
         <Router>
-            <Route exact path="/" component={Index}></Route>
-            <Route path="/about" component={About}></Route>
-            
+            <Switch>
+                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/404" component={P404}></Route>
+                <Route path="*" component={P404}></Route>
+            </Switch>
         </Router>
         )
     }

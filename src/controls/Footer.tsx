@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {CNZZ} from './';
-import * as dm from '../../common/data-manager'
+import * as dm from '../common/data-manager'
 export interface FooterProps{
     flex?:string;
 }
@@ -21,13 +22,13 @@ export class Footer extends React.Component<FooterProps>{
                             <a className="nav-link" href="https://zsh2401.top">开发者博客</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/com">商务合作</a>
+                            <Link className="nav-link" to="/com">商务合作</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/about">关于</a>
+                            <Link className="nav-link" to="/about">关于</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/404.html">404</a>
+                            <Link className="nav-link" to="/404">404</Link>
                         </li>
                     </ul>
                     <div className="d-flex">

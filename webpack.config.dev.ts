@@ -1,10 +1,11 @@
 import webpack from 'webpack';
 import path from 'path';
 import OfflinePlugin from 'offline-plugin';
-
+import ManifestPlugin from 'webpack-pwa-manifest'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
 const config: webpack.Configuration =  {
-    entry:{"__INDEX_ENTRY__" :"./src/app.tsx","__INDEX_404__" :"./src/404.tsx"},
+    entry:{"app" :"./src/app.tsx"},
     output: {
         path :  path.resolve(__dirname,"_dist_"),
         filename:"js/[name].js",
@@ -23,13 +24,29 @@ const config: webpack.Configuration =  {
         new HtmlWebpackPlugin({
             filename:"index.html",
             template:"./src/app.html",
-            chunks:["__INDEX_ENTRY__"]
+            chunks:["app"]
         }),
-        new HtmlWebpackPlugin({
-            filename:"404.html",
-            template:"./src/404.html",
-            chunks:["__INDEX_404__"]
-        })
+        new CopyPlugin([
+            {from:"./src/assests/root",to:"."}
+        ]),
+        new ManifestPlugin({
+            fingerprints:false,
+            name: 'My Progressive Web App',
+            short_name: 'MyPWA',
+            description: 'My awesome Progressive Web App!',
+            background_color: '#ffffff',
+            crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+            icons: [
+            {
+                src: path.resolve('./src/assests/root/leaf.png'),
+                sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+            }
+        ]
+        }),
+        new webpack.DefinePlugin({
+            "__COMPILED_DATE":JSON.stringify(new Date())
+        }),
+        new OfflinePlugin({Caches:"all"}),
     ],
     externals:{
         'antd':'antd',

@@ -1,0 +1,42 @@
+.header{
+    background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
+    margin: 0;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+.header .bottom{
+    width:100%;
+    background:rgba(0,0,0,.4);
+    color:white;
+}
+.header .clearfix-sm{
+    height:12vh;
+}
+.header .clearfix{
+    height:17vh;
+}
+.fluid{
+    padding:0px;
+    margin: 0px;
+}
+.no-radius{
+    border-radius: 0px;
+}
+
+#block-fstore{
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+#block-fav{
+    background: rgba(255,255,255,.5);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+#block-discover{
+    background: rgba(0,0,0,.4);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
