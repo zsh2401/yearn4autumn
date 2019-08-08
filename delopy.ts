@@ -1,9 +1,8 @@
 import {execSync} from 'child_process'
 let cmdList = [
-    "cd _dist_",
-    "git add .",
-    "git commit -m update",
-    'git push -f'
+    "cd _dist_&&git add .",
+    "cd _dist_&&git commit -m update",
+    'cd _dist_&&git push oschina -f'
 ]
 cmdList.forEach(cmd=>{
     try{
