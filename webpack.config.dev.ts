@@ -31,10 +31,10 @@ const config: webpack.Configuration =  {
         ]),
         new ManifestPlugin({
             fingerprints:false,
-            name: 'My Progressive Web App',
-            short_name: 'MyPWA',
-            description: 'My awesome Progressive Web App!',
-            background_color: '#ffffff',
+            name: '慕秋',
+            short_name: '慕秋',
+            description: '多功能PWA',
+            background_color: '#3C8CE7',
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
             {
