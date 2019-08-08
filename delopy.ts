@@ -1,5 +1,12 @@
 import {execSync} from 'child_process'
-console.log(execSync("cd _dist_",{encoding:"utf-8"}));
-console.log(execSync("git add .",{encoding:"utf-8"}));
-console.log(execSync("git commit -m 'a'",{encoding:"utf-8"}));
-console.log(execSync("git push -f",{encoding:"utf-8"}))
+let cmdList = [
+    "cd _dist_",
+    "git add .",
+    "git commit -m update",
+    'git push -f'
+]
+cmdList.forEach(cmd=>{
+    try{
+        console.log(execSync(cmd,{encoding:"utf-8"}));
+    }catch(err){console.log(err);} 
+})
