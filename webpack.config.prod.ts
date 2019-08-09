@@ -11,14 +11,14 @@ const config: webpack.Configuration =  {
         filename:"js/[name].js",
         publicPath: '/'
     },
-    mode:'development',
+    mode:'production',
     resolve: {
         extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
     },
     plugins:[
         new HtmlWebpackPlugin({
             filename:"index.html",
-            template:"./src/template/dev.html",
+            template:"./src/template/prod.html",
             chunks:["app"]
         }),
         new CopyPlugin([
@@ -47,13 +47,13 @@ const config: webpack.Configuration =  {
         new OfflinePlugin({Caches:"all"}),
     ],
     externals:{
-        // 'antd':'antd',
+        'antd':'antd',
         // 'react':'React',
         // 'react-dom':"ReactDOM",
         // 'react-router':"react-router",
         // 'react-router-dom':"react-router-dom",
-        // 'valine':'Valine',
-        // 'leancloud-storage':'AV',
+        'valine':'Valine',
+        'leancloud-storage':'AV',
     },
     module: {
         rules: [

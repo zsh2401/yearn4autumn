@@ -9,7 +9,7 @@ export class NavBar extends React.Component
         return (<nav className="navbar navbar-expand-sm navbar-light bg-light fixed-top" >
         <div className="container">
             <a className="navbar-brand" style={this.brandStyle} href="/">
-                <img style={{maxHeight:'40px'}} src={require('../assests/brand.png')}></img>
+                <img style={{maxHeight:'40px'}} src={require('../assets/brand.png')}></img>
             </a> 
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".targetMenu">
