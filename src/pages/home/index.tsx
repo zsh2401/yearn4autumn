@@ -1,12 +1,10 @@
-require("./app.css");
 import React from 'react';
 import {AppLayout,TransparentNavBar} from '../../controls';
-import {Link} from 'react-router-dom'
 import sentence from '../../common/sentence'
 import {DoubleCol} from './DoubleCol'
+require("./app.css");
 export default class App extends React.Component{
     render(){
-        console.log('abcdefg');
         return(
             <AppLayout type="fluid" enableNavBar={false} enableNotice={false}>
                 <Header></Header>

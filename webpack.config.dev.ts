@@ -18,7 +18,7 @@ const config: webpack.Configuration =  {
     plugins:[
         new HtmlWebpackPlugin({
             filename:"index.html",
-            template:"./src/template/dev.html",
+            template:"./src/template/app.html",
             chunks:["app"]
         }),
         new CopyPlugin([
@@ -28,9 +28,6 @@ const config: webpack.Configuration =  {
             fingerprints:false,
             name: '慕秋',
             short_name: '慕秋',
-            ios:{
-                "apple-mobile-web-app-status-bar-style":"black-translucent",
-            },
             description: '多功能PWA',
             background_color: '#3C8CE7',
             theme_color: "#3C8CE7",
@@ -47,13 +44,13 @@ const config: webpack.Configuration =  {
         new OfflinePlugin({Caches:"all"}),
     ],
     externals:{
-        // 'antd':'antd',
-        // 'react':'React',
-        // 'react-dom':"ReactDOM",
-        // 'react-router':"react-router",
-        // 'react-router-dom':"react-router-dom",
-        // 'valine':'Valine',
-        // 'leancloud-storage':'AV',
+        'antd':'antd',
+        'react':'React',
+        'react-dom':"ReactDOM",
+        'react-router':"ReactRouter",
+        'react-router-dom':"ReactRouterDOM",
+        'valine':'Valine',
+        'leancloud-storage':'AV',
     },
     module: {
         rules: [

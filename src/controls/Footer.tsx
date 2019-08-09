@@ -47,7 +47,6 @@ export class Footer extends React.Component<FooterProps>{
                             编译时间: {dm.getCompileDate()}
                             <br/>
                             <CNZZ></CNZZ>
-                            {/* <ScriptTag type="text/javascript">console.log('tst'); document.write(unescape("%3Cspan id='cnzz_stat_icon_1277812477'%3E%3C/span%3E%3Cscript src='//s23.cnzz.com/z_stat.php%3Fid%3D1277812477%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</ScriptTag> */}
                         </div>
                     </div>
                     <br/>

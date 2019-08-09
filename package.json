@@ -5,10 +5,9 @@
   "scripts": {
     "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.prod.ts",
-    "dbuild": "webpack --config webpack.config.dev.ts",
-    "deploy": "webpack --config webpack.config.dev.ts && ts-node deploy.ts",
-    "dev": "webpack-dev-server --inline --progress --port 9001 --historyApiFallback --config webpack.config.dev.ts"
+    "deploy": "webpack --config webpack.config.prod.ts && ts-node deploy.ts",
+    "dev": "webpack-dev-server --inline --progress --port 9001 --historyApiFallback --config webpack.config.dev.ts",
+    "devp": "webpack-dev-server --inline --progress --port 9001 --historyApiFallback --config webpack.config.prod.ts"
   },
   "repository": {
     "type": "git",
@@ -22,10 +21,13 @@
   "homepage": "https://github.com/zsh2401/fond_of_autumn#readme",
   "dependencies": {
     "antd": "^3.21.2",
+    "bootstrap": "^4.3.1",
     "compress.js": "^1.1.2",
+    "jquery": "^3.4.1",
     "jsnes": "^1.1.0",
     "leancloud-storage": "^3.15.0",
-    "react": "^16.8.6",
+    "popper.js": "^1.15.0",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
