@@ -1,11 +1,11 @@
 import React from 'react';
-import {AppLayout} from "../../controls"
+import {StdLayout} from "../../controls/layout"
 import * as fm from '../../common/fpage-manager'
 export default class FStore extends React.Component{
     render(){
         return (
-            <AppLayout>
+            <StdLayout>
                 <p>{JSON.stringify(fm.getAll())}</p>
-            </AppLayout>);
+            </StdLayout>);
     }
 }

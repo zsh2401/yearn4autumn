@@ -2,13 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {CNZZ} from './';
 import * as dm from '../common/data-manager'
-export interface FooterProps{
-    flex?:string;
-}
-export class Footer extends React.Component<FooterProps>{
+export class Footer extends React.Component{
     readonly style = {
         fontSize:"14px",
-        flex: this.props.flex || null
     }
     render(){
         return(

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import AppRouter from "./AppRouter";
+import "./app.css"
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 OfflinePluginRuntime.install();
 OfflinePluginRuntime.applyUpdate();

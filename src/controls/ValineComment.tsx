@@ -18,12 +18,6 @@ export  class ValineComment extends React.Component<IVCommentProps>{
         });
     }
     render(){
-        return (
-            <div>
-                <br></br>
-                <h3>评论区</h3>
-                <div id="vcomment"></div>
-            </div>
-        )
+        return (<div id="vcomment"></div>)
     }
 }

@@ -1,0 +1,18 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+body{
+    background: #3C8CE7; 
+    margin: 0;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+.text-navbar{
+    color:whitesmoke;
+}
+.bg-white{
+    background:white;
+}

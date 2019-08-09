@@ -2,14 +2,14 @@ import React from 'react';
 import {AppLayout,TransparentNavBar} from '../../controls';
 import sentence from '../../common/sentence'
 import {DoubleCol} from './DoubleCol'
-require("./app.css");
+import "./app.css";
 export default class App extends React.Component{
     render(){
         return(
-            <AppLayout type="fluid" enableNavBar={false} enableNotice={false}>
+            <AppLayout navbar="transparent">
                 <Header></Header>
                 <div style={{height:'20px'}}></div>
-                <div className="container">
+                <div className="container bg-white">
                     <DoubleCol pictureSrc="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=a5ae3bea9d0a304e462fa8a8b0a1cce3/80cb39dbb6fd526688a773faa118972bd507364b.jpg">
                         <div className="text-center">
                             <h2>响应式站点</h2>

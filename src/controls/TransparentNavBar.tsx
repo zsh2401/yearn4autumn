@@ -2,7 +2,7 @@ import React from 'react';
 export class TransparentNavBar extends React.Component
 {
     render(){
-        return (<nav className="navbar navbar-expand-sm navbar-dark" style={{background:'transparent'}}>
+        return (<nav className="navbar navbar-expand-sm navbar-dark fixed-top" style={{background:'transparent'}}>
         <div className="container">
             <a className="navbar-brand" href="/">
                 慕秋 Y4A.FUN

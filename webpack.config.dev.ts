@@ -13,16 +13,16 @@ const config: webpack.Configuration =  {
     },
     mode:'development',
     resolve: {
-        extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".ejs",".json",".pug"]
+        extensions: ['.ts', '.js','.tsx',".css",".png",".jpg",".json"]
     },
     plugins:[
         new HtmlWebpackPlugin({
             filename:"index.html",
-            template:"./src/template/app.html",
+            template:"./src/app.html",
             chunks:["app"]
         }),
         new CopyPlugin([
-            {from:"./src/assets/root",to:"."}
+            {from:"./src/assets/copy-to-root",to:"."}
         ]),
         new ManifestPlugin({
             fingerprints:false,
@@ -34,7 +34,7 @@ const config: webpack.Configuration =  {
             crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
             icons: [
             {
-                src: path.resolve('./src/assets/root/leaf.png'),
+                src: path.resolve('./src/assets/leaf.png'),
                 sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
             }]
         }),
