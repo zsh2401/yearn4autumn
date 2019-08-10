@@ -1,9 +1,10 @@
-import React from 'react'
-import {Footer,NavBar} from '..'
+import React from 'react';
+import {Footer,TransparentNavBar} from '..';
+import { NavBar } from '../NavBar';
 export class StdLayout extends React.Component{
     render(){
         return <this.AppOuter>
-        <NavBar></NavBar>
+        <TransparentNavBar></TransparentNavBar>
         <div className="bg-white" style={{flex:"1 0 auto"}}>
             <div className="container">
                 {this.props.children}
