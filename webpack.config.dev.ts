@@ -24,6 +24,7 @@ const config: webpack.Configuration =  {
         new CopyPlugin([
             {from:"./src/assets/copy-to-root",to:"."}
         ]),
+        
         new ManifestPlugin({
             fingerprints:false,
             name: '慕秋',
