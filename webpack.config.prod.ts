@@ -7,7 +7,7 @@ import CopyPlugin from 'copy-webpack-plugin'
 const config: webpack.Configuration =  {
     entry:{"app" :"./src/app.tsx"},
     output: {
-        path :  path.resolve(__dirname,"_dist_"),
+        path :  path.resolve(__dirname,"dist"),
         filename:"js/[name].js",
         publicPath: '/'
     },

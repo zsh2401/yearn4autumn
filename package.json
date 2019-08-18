@@ -1,11 +1,9 @@
 {
-  "name": "fond_of_autumn",
+  "name": "yearn-4-autumn",
   "version": "0.0.1",
-  "description": "A great website",
+  "description": "A great pwa",
   "scripts": {
-    "start": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "webpack --config webpack.config.prod.ts && ts-node deploy.ts",
+    "build": "webpack --config webpack.config.prod.ts",
     "dev": "webpack-dev-server --inline --progress --port 9001 --historyApiFallback --config webpack.config.dev.ts",
     "devp": "webpack-dev-server --inline --progress --port 9001 --historyApiFallback --config webpack.config.prod.ts"
   },
